@@ -40,7 +40,10 @@ def handle_pkt(pkt):
 
 
 def main():
-    iface = 'h2-eth0'
+    if (len(sys.argv) != 2):
+        print "Correct way: ./receive.py <interface-name>"
+        exit(1)
+    iface = sys.argv[1]
     print "sniffing on %s" % iface
     sys.stdout.flush()
     sniff(filter="udp and port 4321", iface = iface,
