@@ -14,10 +14,8 @@ the destination, the sequence of switch IDs correspond to the path.
 As before, we have already defined the control plane rules, so you
 only need to implement the data plane logic of your P4 program.
 
-> **Spoiler alert:** There is a reference solution in the `solution`
-> sub-directory. Feel free to compare your implementation to the reference.
 
-## Step 1: Run the (incomplete) starter code
+## Step 1: Run the code
 
 The directory with this README also contains a skeleton P4 program,
 `mri.p4`, which initially implements L3 forwarding.  Your job (in the
