@@ -2,12 +2,11 @@
 #include <core.p4>
 #include <v1model.p4>
 
-const bit<8>  UDP_PROTOCOL = 0x11;
-const bit<16> TYPE_IPV4 = 0x800;
 const bit<16> TYPE_IPV6 = 0x86DD;
-const bit<5>  IPV4_OPTION_MRI = 31;
+const bit<5>  IPV6_HOP_BY_HOP = 0;
+const bit <8> IPV6_OPTION_IOAM_TRACE_TYPE = 6;
 
-#define MAX_HOPS 9
+#define MAX_HOPS 30
 
 /*************************************************************************
 *********************** H E A D E R S  ***********************************
@@ -35,35 +34,16 @@ header ipv6_t {
    ip6Addr_t     dstAddr;
 }
 
-header icmpv6_t {
-    bit<8>     hdr_type;
-    bit<8>     code;
-    bit<16>    hdrChecksum;
+header ipv6_option_t {
+    bit<8> option_type;
+    bit<8> opt_data_len;
+/* always mark reserved fields as Zero as per rfc */
+    bit<16> reserved;
+/* for time being , we are making it as 1024 bits , so as to accomodate 30 HOP data */
+    varbit<1024>  option_data;
 }
 
-header ipv4_t {
-    bit<4>    version;
-    bit<4>    ihl;
-    bit<8>    diffserv;
-    bit<16>   totalLen;
-    bit<16>   identification;
-    bit<3>    flags;
-    bit<13>   fragOffset;
-    bit<8>    ttl;
-    bit<8>    protocol;
-    bit<16>   hdrChecksum;
-    ip4Addr_t srcAddr;
-    ip4Addr_t dstAddr;
-}
-
-header ipv4_option_t {
-    bit<1> copyFlag;
-    bit<2> optClass;
-    bit<5> option;
-    bit<8> optionLength;
-}
-
-header mri_t {
+header ioam_trace_t {
     bit<16>  count;
 }
 
@@ -72,7 +52,7 @@ header switch_t {
 }
 
 struct ingress_metadata_t {
-    bit<16>  count;
+    bit<16>  count; // for time being count should be max to 30
 }
 
 struct parser_metadata_t {
@@ -86,9 +66,9 @@ struct metadata {
 
 struct headers {
     ethernet_t   ethernet;
-    ipv4_t       ipv4;
-    ipv4_option_t  ipv4_option;
-    mri_t        mri;
+    ipv6_t       ipv6;
+    ipv6_option_t  ipv6_option;
+    ioam_trace_t        ioam_trace;
     switch_t[MAX_HOPS] swids;
 }
 
@@ -110,31 +90,30 @@ inout standard_metadata_t standard_metadata) {
     state parse_ethernet {
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType) {
-            TYPE_IPV4: parse_ipv4;
+            TYPE_IPV6: parse_ipv6;
             default: accept;
         }
     }
 
-    state parse_ipv4 {
-        packet.extract(hdr.ipv4);
-        verify(hdr.ipv4.ihl >= 5, error.IPHeaderTooShort);
-        transition select(hdr.ipv4.ihl) {
-            5             : accept;
-            default       : parse_ipv4_option;
+    state parse_ipv6 {
+        packet.extract(hdr.ipv6);
+        transition select(hdr.ipv6.nextHdr) {
+            IPV6_HOP_BY_HOP   : parse_ipv6_hop_by_hop_option;
+            default       : accept;
         }
     }
 
-    state parse_ipv4_option {
-        packet.extract(hdr.ipv4_option);
-        transition select(hdr.ipv4_option.option) {
-            IPV4_OPTION_MRI: parse_mri;
+    state parse_ipv6_hop_by_hop_option {
+        packet.extract(hdr.ipv6_option);
+        transition select(hdr.ipv6_option.option_type) {
+            IPV6_OPTION_IOAM_TRACE_TYPE: parse_ipv6_ioam_trace;
             default: accept;
         }
     }
 
-    state parse_mri {
-        packet.extract(hdr.mri);
-        meta.parser_metadata.remaining = hdr.mri.count;
+    state parse_ioam_trace {
+        packet.extract(hdr.ioam_trace);
+        meta.parser_metadata.remaining = hdr.ioam_trace.count;
         transition select(meta.parser_metadata.remaining) {
             0 : accept;
             default: parse_swid;
@@ -149,6 +128,7 @@ inout standard_metadata_t standard_metadata) {
             default: parse_swid;
         }
     }    
+
 }
 
 
@@ -170,32 +150,33 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         mark_to_drop();
     }
     
-    action add_mri_option() {
-        hdr.ipv4_option.setValid();
-        hdr.ipv4_option.copyFlag     = 1;
-        hdr.ipv4_option.optClass     = 2;  /* Debugging and Measurement */
-        hdr.ipv4_option.option       = IPV4_OPTION_MRI;
-        hdr.ipv4_option.optionLength = 4;  /* sizeof(ipv4_option) + sizeof(mri) */
+    action add_ioam_trace_option() {
+        hdr.ipv6_option.setValid();
+        hdr.ipv6_option.option_type     =  IPV6_OPTION_IOAM_TRACE_TYPE;
+        hdr.ipv6_option.optClass     = 2;  /* Debugging and Measurement */
+        hdr.ipv6_option.option       = 0;
+        hdr.ipv6_option.optionLength = 1024;  /* sizeof(ipv6_option) + sizeof(ioam_trace) */
         
-        hdr.mri.setValid();
-        hdr.mri.count = 0;
-        hdr.ipv4.ihl = hdr.ipv4.ihl + 1;
+        hdr.ioam_trace.setValid();
+        hdr.ioam_trace.count = 0;
+        /*we need to fetch the nexthdr from the ipv6 packet first , copy it into a local var (for time being) and then we need to set it as part of the ioam next header */
+        hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
     }
     
     action add_swid(switchID_t id) {    
-        hdr.mri.count = hdr.mri.count + 1;
+        hdr.ioam_trace.count = hdr.ioam_trace.count + 1;
         hdr.swids.push_front(1);
         hdr.swids[0].swid = id;
 
-        hdr.ipv4.ihl = hdr.ipv4.ihl + 1;
-        hdr.ipv4_option.optionLength = hdr.ipv4_option.optionLength + 4;    
+        hdr.ipv6.ihl = hdr.ipv6.ihl + 1;
+        hdr.ipv6_option.optionLength = hdr.ipv6_option.optionLength + 4;    
     }
     
-    action ipv4_forward(macAddr_t dstAddr, egressSpec_t port) {
+    action ipv6_forward(macAddr_t dstAddr, egressSpec_t port) {
         standard_metadata.egress_spec = port;
         hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
         hdr.ethernet.dstAddr = dstAddr;
-        hdr.ipv4.ttl = hdr.ipv4.ttl - 1;
+        hdr.ipv6.ttl = hdr.ipv6.ttl - 1;
     }
 
     table swid {
@@ -203,12 +184,12 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         default_action =  NoAction();      
     }
     
-    table ipv4_lpm {
+    table ipv6_lpm {
         key = {
-            hdr.ipv4.dstAddr: lpm;
+            hdr.ipv6.dstAddr: lpm;
         }
         actions = {
-            ipv4_forward;
+            ipv6_forward;
             drop;
             NoAction;
         }
@@ -217,11 +198,11 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
     }
     
     apply {
-        if (hdr.ipv4.isValid()) {
-            ipv4_lpm.apply();
+        if (hdr.ipv6.isValid()) {
+            ipv6_lpm.apply();
             
-            if (!hdr.mri.isValid()) {
-                add_mri_option();
+            if (!hdr.ioam_trace.isValid()) {
+                add_ioam_trace_option();
             }    
             
             swid.apply();
@@ -246,23 +227,23 @@ control computeChecksum(
 inout headers  hdr,
 inout metadata meta)
 {
-    Checksum16() ipv4_checksum;
+    Checksum16() ipv6_checksum;
     
     apply {
-        if (hdr.ipv4.isValid()) {
-            hdr.ipv4.hdrChecksum = ipv4_checksum.get(
+        if (hdr.ipv6.isValid()) {
+            hdr.ipv6.hdrChecksum = ipv6_checksum.get(
             {    
-                hdr.ipv4.version,
-                hdr.ipv4.ihl,
-                hdr.ipv4.diffserv,
-                hdr.ipv4.totalLen,
-                hdr.ipv4.identification,
-                hdr.ipv4.flags,
-                hdr.ipv4.fragOffset,
-                hdr.ipv4.ttl,
-                hdr.ipv4.protocol,
-                hdr.ipv4.srcAddr,
-                hdr.ipv4.dstAddr
+                hdr.ipv6.version,
+                hdr.ipv6.ihl,
+                hdr.ipv6.diffserv,
+                hdr.ipv6.totalLen,
+                hdr.ipv6.identification,
+                hdr.ipv6.flags,
+                hdr.ipv6.fragOffset,
+                hdr.ipv6.ttl,
+                hdr.ipv6.protocol,
+                hdr.ipv6.srcAddr,
+                hdr.ipv6.dstAddr
             });
         }
     }
@@ -275,9 +256,9 @@ inout metadata meta)
 control DeparserImpl(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
-        packet.emit(hdr.ipv4);
-        packet.emit(hdr.ipv4_option);
-        packet.emit(hdr.mri);
+        packet.emit(hdr.ipv6);
+        packet.emit(hdr.ipv6_option);
+        packet.emit(hdr.ioam_trace);
         packet.emit(hdr.swids);                 
     }
 }
