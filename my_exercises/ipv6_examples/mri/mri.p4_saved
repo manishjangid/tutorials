@@ -16,6 +16,7 @@ typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
 typedef bit<32> ip4Addr_t;
 typedef bit<128> ip6Addr_t;
+typedef bit<64> Elts_t;
 
 header ethernet_t {
     macAddr_t dstAddr;
@@ -71,15 +72,19 @@ header ip6_hop_by_hop_option_t {
 */
 
 #define   TRACE_TYPE_TS   0x09
-header ioam_trace_ts_t {
-  bit<8>    hop_lim;
-  bit<24>   node_id;
-  bit<32>   timestamp;
+struct ioam_trace_ts_t {
+  bit<32> ttl_node_id;
+  bit<32> timestamp;
+}
+
+header elts_t {
+    Elts_t  elts;
 }
 
 header ioam_trace_hdr_t {
   bit<8> ioam_trace_type;
   bit<8> data_list_elts_left;
+  elts_t[3] elts; /* Variable type. So keep it generic */
 }
 
 
@@ -102,7 +107,7 @@ struct headers {
     ip6_hop_by_hop_header_t ip6_hop_by_hop_header;
     ip6_hop_by_hop_option_t ip6_hop_by_hop_option;
     ioam_trace_hdr_t ioam_trace_hdr;
-    ioam_trace_ts_t[MAX_HOPS] ioam_trace_ts; 
+    /*switch_t[MAX_HOPS] swids; */
 }
 
 error { IPHeaderTooShort }
@@ -127,6 +132,43 @@ inout standard_metadata_t standard_metadata) {
             default: accept;
         }
     }
+   /* ADDOGRA : COMMENTED 
+
+    state parse_ipv6 {
+        packet.extract(hdr.ipv6);
+        transition select(hdr.ipv6.nextHdr) {
+            IPV6_HOP_BY_HOP   : parse_ipv6_hop_by_hop_option;
+            default       : accept;
+        }
+    }
+
+    state parse_ipv6_hop_by_hop_option {
+        packet.extract(hdr.ipv6_option);
+        transition select(hdr.ipv6_option.option_type) {
+            IPV6_OPTION_IOAM_TRACE_TYPE: parse_ipv6_ioam_trace;
+            default: accept;
+        }
+    }
+
+    state parse_ipv6_ioam_trace {
+        packet.extract(hdr.ioam_trace);
+        meta.parser_metadata.remaining = hdr.ioam_trace.count;
+        transition select(meta.parser_metadata.remaining) {
+            0 : accept;
+            default: parse_swid;
+        }
+    }
+
+    state parse_swid {
+        packet.extract(hdr.swids.next);
+        meta.parser_metadata.remaining = meta.parser_metadata.remaining  - 1;
+        transition select(meta.parser_metadata.remaining) {
+            0 : accept;
+            default: parse_swid;
+        }
+    }    
+
+    ADDOGRA : COMMENTED */ 
 }
 
 
@@ -144,8 +186,73 @@ control verifyChecksum(in headers hdr, inout metadata meta) {
 *************************************************************************/
 
 control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_t standard_metadata) {
-    apply {  }
+   /* ADDOGRA : COMMENTED 
+    action drop() {
+        mark_to_drop();
+    }
     
+    action add_ioam_trace_option() {
+        hdr.ipv6_option.setValid();
+        hdr.ipv6_option.option_type     =  IPV6_OPTION_IOAM_TRACE_TYPE;
+        hdr.ipv6_option.opt_data_len     = 40;  /* Debugging and Measurement */
+        hdr.ipv6_option.reserved       = 0;
+        hdr.ipv6_option.option_data = 40;  /* sizeof(ipv6_option) + sizeof(ioam_trace) */
+        
+        hdr.ioam_trace.setValid();
+        hdr.ioam_trace.count = 0;
+        /*we need to fetch the nexthdr from the ipv6 packet first , copy it into a local var (for time being) and then we need to set it as part of the ioam next header */
+        hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
+    }
+    action add_swid(switchID_t id) {    
+        hdr.ioam_trace.count = hdr.ioam_trace.count + 1;
+        hdr.swids.push_front(1);
+        hdr.swids[0].swid = id;
+
+        hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + 1;
+        hdr.ipv6_option.opt_data_len = hdr.ipv6_option.opt_data_len + sizeof(hdr.ipv6_option);    
+    }
+    
+    action ipv6_forward(macAddr_t dstAddr, egressSpec_t port) {
+        standard_metadata.egress_spec = port;
+        hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
+        hdr.ethernet.dstAddr = dstAddr;
+        hdr.ipv6.hopLimit = hdr.ipv6.hopLimit - 1;
+    }
+
+    table swid {
+        actions        = { add_swid; NoAction; }
+        default_action =  NoAction();      
+    }
+    
+    table ipv6_lpm {
+        key = {
+            hdr.ipv6.dstAddr: lpm;
+        }
+        actions = {
+            ipv6_forward;
+            drop;
+            NoAction;
+        }
+        size = 1024;
+        default_action = NoAction();
+    }
+    
+    apply {
+        if (hdr.ipv6.isValid()) {
+            ipv6_lpm.apply();
+            
+            if (!hdr.ipv6_option.isValid()) {
+               if (!hdr.ioam_trace.isValid()) {
+                   add_ioam_trace_option();
+               } else {
+                   update_ioam_trace_option();
+
+               }    
+               swid.apply();
+            }
+        }
+    }
+ADDOGRA : COMMENTED */
 }
 
 /*************************************************************************
@@ -165,6 +272,8 @@ control computeChecksum(
 inout headers  hdr,
 inout metadata meta)
 {
+    Checksum16() ipv6_checksum;
+    
     apply {
         }
 }
@@ -175,6 +284,13 @@ inout metadata meta)
 
 control DeparserImpl(packet_out packet, in headers hdr) {
     apply {
+   /* ADDOGRA : COMMENTED 
+        packet.emit(hdr.ethernet);
+        packet.emit(hdr.ipv6);
+        packet.emit(hdr.ipv6_option);
+        packet.emit(hdr.ioam_trace);
+        packet.emit(hdr.swids);                 
+    ADDOGRA : COMMENTED */ 
     }
 }
 
