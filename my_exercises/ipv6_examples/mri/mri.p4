@@ -18,6 +18,7 @@ typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
 typedef bit<32> ip4Addr_t;
 typedef bit<128> ip6Addr_t;
+typedef bit<24>   nodeID_t;
 
 header ethernet_t {
     macAddr_t dstAddr;
@@ -78,9 +79,9 @@ header ioam_trace_hdr_t {
 */
 
 header ioam_trace_ts_t {
-  bit<8>    hop_lim;
-  bit<24>   node_id;
-  bit<32>   timestamp;
+  bit<8>     hop_lim;
+  nodeID_t   node_id;
+  bit<32>    timestamp;
 }
 
 
@@ -199,8 +200,44 @@ control verifyChecksum(in headers hdr, inout metadata meta) {
 *************************************************************************/
 
 control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_t standard_metadata) {
-    apply {  }
+    action drop() {
+        mark_to_drop();
+    }
+
+    table node_id {
+        actions        = { add_nodeid; NoAction; }
+        default_action =  NoAction();
+    }
     
+
+    action add_ioam_option() {
+        hdr.ioam_trace_hdr.setValid();
+        hdr.ioam_trace_hdr.ioam_trace_type           = 0x09;
+        hdr.ioam_trace_hdr_t.data_list_elts_left     = 3;  /* This value will be pushed by the controller */
+
+        hdr.ioam_trace_ts.setValid();
+        hdr.ioam_trace_ts.push_front(1);
+        hdr.ioam_trace_ts[0].hop_lim = hdr.ipv6.hopLimit;
+        hdr.ioam_trace_ts[0].node_id = 0;
+        hdr.ioam_trace_ts[0].timestamp = 0;
+        // We need to update the ipv6 header lenght //
+        //hdr.ipv4.ihl = hdr.ipv4.ihl + 1;
+    }
+
+    apply {
+        if (hdr.ipv6.isValid()) {
+            if (hdr.ip6_hop_by_hop_header.isValid()) {
+            if (hdr.ip6_hop_by_hop_option.isValid()) { 
+
+            //ipv6_lpm.apply();
+            if (!hdr.ioam_trace_hdr.isValid()) {
+                add_ioam_option();
+            }
+
+            swid.apply();
+        }
+    }
+
 }
 
 /*************************************************************************
