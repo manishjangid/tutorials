@@ -4,7 +4,9 @@
 
 const bit<16> TYPE_IPV6 = 0x86DD;
 const bit<8>  IPV6_HOP_BY_HOP = 0;
-const bit <8> IPV6_OPTION_IOAM_TRACE_TYPE = 6;
+const bit<8> IPV6_OPTION_IOAM_TRACE_TYPE = 6;
+const bit<8> HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST = 0x3b; 
+const bit<8>  TRACE_TYPE_TS = 0x09; 
 
 #define MAX_HOPS 30
 
@@ -58,6 +60,11 @@ header ip6_hop_by_hop_option_t {
 
 }
 
+header ioam_trace_hdr_t {
+  bit<8> ioam_trace_type;
+  bit<8> data_list_elts_left;
+}
+
 /*
      0x00001001  iOAM-trace-type is 0x00001001 then the format is:
 
@@ -70,17 +77,12 @@ header ip6_hop_by_hop_option_t {
 
 */
 
-#define   TRACE_TYPE_TS   0x09
 header ioam_trace_ts_t {
   bit<8>    hop_lim;
   bit<24>   node_id;
   bit<32>   timestamp;
 }
 
-header ioam_trace_hdr_t {
-  bit<8> ioam_trace_type;
-  bit<8> data_list_elts_left;
-}
 
 
 struct ingress_metadata_t {
@@ -88,7 +90,10 @@ struct ingress_metadata_t {
 }
 
 struct parser_metadata_t {
-    bit<16>  remaining;
+    bit<8>   elts_left;
+    bit<8>   ipv6_nextproto;
+    bit<8>   nextprotocol;
+    bit<8>   nextlength;
 }
 
 struct metadata {
@@ -123,10 +128,60 @@ inout standard_metadata_t standard_metadata) {
     state parse_ethernet {
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType) {
-            TYPE_IPV6: accept;
+            TYPE_IPV6: parse_ipv6;
             default: accept;
         }
     }
+
+    state parse_ipv6 {
+        packet.extract(hdr.ipv6);
+        meta.parser_metadata.ipv6_nextproto = hdr.ipv6.nextHdr;
+        transition select(hdr.ipv6.nextHdr) {
+           IPV6_HOP_BY_HOP: parse_ipv6_hop_by_hop;
+           default: accept; //We should check in case of the ingress if the ip hop by hop header exists , then we need to add it , just like mri_header
+        }
+    }
+
+
+    state parse_ipv6_hop_by_hop {
+        packet.extract(hdr.ip6_hop_by_hop_header);
+        meta.parser_metadata.nextprotocol = hdr.ip6_hop_by_hop_header.protocol;
+        meta.parser_metadata.nextlength = hdr.ip6_hop_by_hop_header.length;
+        packet.extract(hdr.ip6_hop_by_hop_option);
+        transition select(hdr.ip6_hop_by_hop_option.type) {
+            HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST: parse_ioam_trace_data_list;
+            default: accept;
+        }
+    }
+
+    state parse_ioam_trace_data_list {
+        packet.extract(hdr.ioam_trace_hdr);
+        transition select(hdr.ioam_trace_hdr.ioam_trace_type) {
+            TRACE_TYPE_TS : parse_ioam_ts_trace_type;
+            default: accept;
+        }
+    }
+
+    // NEED TO REVISIT THIS //
+
+    state parse_ioam_ts_trace_type {
+        packet.extract(hdr.ioam_trace_hdr);
+        meta.parser_metadata.elts_left = hdr.ioam_trace_hdr.data_list_elts_left;
+        transition select(meta.parser_metadata.elts_left) {
+            0 : accept; 
+            default: parse_ioam_trace_ts;
+        }
+    }
+
+    state parse_ioam_trace_ts {
+        packet.extract(hdr.ioam_trace_ts.next);
+        meta.parser_metadata.elts_left = meta.parser_metadata.elts_left  - 1;
+        transition select(meta.parser_metadata.elts_left) {
+            0 : accept;   // NEED TO CHECK IF THIS NEEDS TO BE ZERO or -1 //
+            default: parse_ioam_trace_ts;
+        }
+    }
+
 }
 
 
