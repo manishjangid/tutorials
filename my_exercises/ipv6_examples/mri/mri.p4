@@ -7,6 +7,10 @@ const bit<8>  IPV6_HOP_BY_HOP = 0;
 const bit<8> IPV6_OPTION_IOAM_TRACE_TYPE = 6;
 const bit<8> HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST = 0x3b; 
 const bit<8>  TRACE_TYPE_TS = 0x09; 
+const bit<8>  MAX_HOP_COUNT = 0x03; 
+
+/* 22 bytes of ioam header (with currenly fixed 3 as max count) + 2 bytes of padding + 8 bytes of hop by hop header */
+const bit<16> HEADER_LENGTH = 32;
 
 #define MAX_HOPS 30
 
@@ -87,7 +91,9 @@ header ioam_trace_ts_t {
 
 
 struct ingress_metadata_t {
-    bit<16>  count; // for time being count should be max to 30
+    bit<16>   count; // for time being count should be max to 30
+   bit<8>     hopLimit;
+
 }
 
 struct parser_metadata_t {
@@ -204,39 +210,73 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         mark_to_drop();
     }
 
-    table node_id {
-        actions        = { add_nodeid; NoAction; }
-        default_action =  NoAction();
+    action ipv6_forward(macAddr_t dstAddr, egressSpec_t port) {
+        standard_metadata.egress_spec = port;
+        hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
+        hdr.ethernet.dstAddr = dstAddr;
+        meta.ingress_metadata.hopLimit = hdr.ipv6.hopLimit;
+        hdr.ipv6.hopLimit = hdr.ipv6.hopLimit - 1;
     }
-    
+
+
+    table ipv6_lpm {
+        key = {
+            hdr.ipv6.dstAddr: lpm;
+        }
+        actions = {
+            ipv6_forward;
+            drop;
+            NoAction;
+        }
+        size = 1024;
+        default_action = NoAction();
+    }
 
     action add_ioam_option() {
+        hdr.ip6_hop_by_hop_header.setValid();
+        hdr.ip6_hop_by_hop_option.setValid();
         hdr.ioam_trace_hdr.setValid();
-        hdr.ioam_trace_hdr.ioam_trace_type           = 0x09;
-        hdr.ioam_trace_hdr_t.data_list_elts_left     = 3;  /* This value will be pushed by the controller */
+        hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
+        hdr.ip6_hop_by_hop_header.protocol = meta.parser_metadata.nextprotocol;
+        hdr.ip6_hop_by_hop_header.length = 3;
+        // MOST IMPORANT : Modify the PACKET HEADER LENGHT // 
+        hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
+        hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST;
+        hdr.ioam_trace_hdr.ioam_trace_type = TRACE_TYPE_TS;
 
-        hdr.ioam_trace_ts.setValid();
-        hdr.ioam_trace_ts.push_front(1);
-        hdr.ioam_trace_ts[0].hop_lim = hdr.ipv6.hopLimit;
-        hdr.ioam_trace_ts[0].node_id = 0;
+        hdr.ioam_trace_hdr.data_list_elts_left = MAX_HOP_COUNT;  /* This value will be pushed by the controller */
+
+
+        hdr.ioam_trace_ts[0].setValid();
+        hdr.ioam_trace_ts[1].setValid();
+        hdr.ioam_trace_ts[2].setValid();
+        hdr.ioam_trace_ts[0].hop_lim = meta.ingress_metadata.hopLimit; // COPY from the saved one , not from the decremented one
+        hdr.ioam_trace_ts[0].node_id = 0x123;
         hdr.ioam_trace_ts[0].timestamp = 0;
-        // We need to update the ipv6 header lenght //
-        //hdr.ipv4.ihl = hdr.ipv4.ihl + 1;
+        hdr.ioam_trace_ts[1].hop_lim = meta.ingress_metadata.hopLimit; // COPY from the saved one , not from the decremented one
+        hdr.ioam_trace_ts[1].node_id = 0x456;
+        hdr.ioam_trace_ts[1].timestamp = 0;
+        hdr.ioam_trace_ts[2].hop_lim = meta.ingress_metadata.hopLimit; // COPY from the saved one , not from the decremented one
+        hdr.ioam_trace_ts[2].node_id = 0x789;
+        hdr.ioam_trace_ts[2].timestamp = 0;
+
+        
     }
 
     apply {
         if (hdr.ipv6.isValid()) {
-            if (hdr.ip6_hop_by_hop_header.isValid()) {
-            if (hdr.ip6_hop_by_hop_option.isValid()) { 
+            ipv6_lpm.apply();
 
-            //ipv6_lpm.apply();
-            if (!hdr.ioam_trace_hdr.isValid()) {
-                add_ioam_option();
-            }
+            if ((!hdr.ip6_hop_by_hop_header.isValid()) ||
+                 (!hdr.ip6_hop_by_hop_option.isValid()) ||
+                 (!hdr.ioam_trace_hdr.isValid())) {
+                 
+                       add_ioam_option();
+              }
+             /* swid.apply(); */
 
-            swid.apply();
-        }
-    }
+          }
+      }
 
 }
 
