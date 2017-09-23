@@ -1,0 +1,157 @@
+vpp# show trace
+------------------- Start of thread 0 vpp_main -------------------
+Packet 1
+
+03:02:25:555921: af-packet-input
+  af_packet: hw_if_index 1 next-index 4
+    tpacket2_hdr:
+      status 0x20000001 len 158 snaplen 158 mac 66 net 80
+      sec 0x59b8baa0 nsec 0x2b8850f6 vlan 0 vlan_tpid 0
+03:02:25:555928: ethernet-input
+  IP6: 02:fe:21:80:d9:84 -> 02:fe:60:f8:22:ee
+03:02:25:555938: ip6-input
+  IP6_HOP_BY_HOP_OPTIONS: db00::2 -> db03::2
+    tos 0x00, flow label 0x84eeb, hop limit 62, payload length 104
+03:02:25:555942: ip6-lookup
+  fib 0 dpo-idx 5 flow hash: 0x00000000
+  IP6_HOP_BY_HOP_OPTIONS: db00::2 -> db03::2
+    tos 0x00, flow label 0x84eeb, hop limit 62, payload length 104
+03:02:25:555945: ip6-hop-by-hop
+  IP6_HOP_BY_HOP: next index 12 len 40 traced 40  Trace Type 0x9 , 0 elts left
+    [0] ttl 0x3e node id 0x3 ts 0xfe5c4636 
+
+    [1] ttl 0x3f node id 0x2 ts 0xfdf3427d 
+
+    [2] ttl 0x40 node id 0x1 ts 0xfe5ee280 
+
+
+    unrecognized option 29 length 6
+03:02:25:555947: ip6-pop-hop-by-hop
+  IP6_POP_HOP_BY_HOP: next index 5
+03:02:25:555949: ip6-rewrite
+  tx_sw_if_index 2 adj-idx 5 : ipv6 via db03::2 host-l_c2: 1215c47ffb7902fedc50da8686dd flow hash: 0x00000000
+  00000000: 1215c47ffb7902fedc50da8686dd60084eeb00403a3ddb000000000000000000
+  00000020: 000000000002db0300000000000000000000000000028000673f00310001a0ba
+  00000040: b859000000003f240b0000000000101112131415161718191a1b1c1d1e1f2021
+  00000060: 22232425262728292a2b2c2d2e2f3031323334353637000000000000
+03:02:25:555950: host-l_c2-output
+  host-l_c2
+  IP6: 02:fe:dc:50:da:86 -> 12:15:c4:7f:fb:79
+  ICMP6: db00::2 -> db03::2
+    tos 0x00, flow label 0x84eeb, hop limit 61, payload length 64
+  ICMP echo_request checksum 0x673f
+
+Packet 2
+
+03:02:25:555986: af-packet-input
+  af_packet: hw_if_index 2 next-index 4
+    tpacket2_hdr:
+      status 0x20000001 len 118 snaplen 118 mac 66 net 80
+      sec 0x59b8baa0 nsec 0x2b8982ea vlan 0 vlan_tpid 0
+03:02:25:555989: ethernet-input
+  IP6: 12:15:c4:7f:fb:79 -> 02:fe:dc:50:da:86
+03:02:25:555990: ip6-input
+  ICMP6: db03::2 -> db00::2
+    tos 0x00, flow label 0x905eb, hop limit 64, payload length 64
+  ICMP echo_reply checksum 0x663f
+03:02:25:555991: ip6-inacl
+  INACL: sw_if_index 2, next_index 1, table 0, offset -1
+03:02:25:555992: ip6-lookup
+  fib 0 dpo-idx 4 flow hash: 0x00000000
+  ICMP6: db03::2 -> db00::2
+    tos 0x00, flow label 0x905eb, hop limit 64, payload length 64
+  ICMP echo_reply checksum 0x663f
+03:02:25:555994: ip6-rewrite
+  tx_sw_if_index 1 adj-idx 4 : ipv6 via db02::1 host-l_c1: 02fe2180d98402fe60f822ee86dd flow hash: 0x00000000
+  00000000: 02fe2180d98402fe60f822ee86dd600905eb00403a3fdb030000000000000000
+  00000020: 000000000002db0000000000000000000000000000028100663f00310001a0ba
+  00000040: b859000000003f240b0000000000101112131415161718191a1b1c1d1e1f2021
+  00000060: 22232425262728292a2b2c2d2e2f3031323334353637101112131415
+03:02:25:555995: host-l_c1-output
+  host-l_c1
+  IP6: 02:fe:60:f8:22:ee -> 02:fe:21:80:d9:84
+  ICMP6: db03::2 -> db00::2
+    tos 0x00, flow label 0x905eb, hop limit 63, payload length 64
+  ICMP echo_reply checksum 0x663f
+
+Packet 3
+
+03:02:30:716588: af-packet-input
+  af_packet: hw_if_index 2 next-index 4
+    tpacket2_hdr:
+      status 0x1 len 86 snaplen 86 mac 66 net 80
+      sec 0x59b8baa5 nsec 0x347fc755 vlan 0 vlan_tpid 0
+03:02:30:716595: ethernet-input
+  IP6: 12:15:c4:7f:fb:79 -> 02:fe:dc:50:da:86
+03:02:30:716614: ip6-input
+  ICMP6: fe80::1015:c4ff:fe7f:fb79 -> db03::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0x21fc
+    target address db03::1
+03:02:30:716617: ip6-inacl
+  INACL: sw_if_index 2, next_index 1, table 0, offset -1
+03:02:30:716618: ip6-lookup
+  fib 0 dpo-idx 7 flow hash: 0x00000000
+  ICMP6: fe80::1015:c4ff:fe7f:fb79 -> db03::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0x21fc
+    target address db03::1
+03:02:30:716621: ip6-local
+    ICMP6: fe80::1015:c4ff:fe7f:fb79 -> db03::1
+      tos 0x00, flow label 0x0, hop limit 255, payload length 32
+    ICMP neighbor_solicitation checksum 0x21fc
+    target address db03::1
+03:02:30:716624: ip6-icmp-input
+  ICMP6: fe80::1015:c4ff:fe7f:fb79 -> db03::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0x21fc
+    target address db03::1
+03:02:30:716625: icmp6-neighbor-solicitation
+  ICMP6: fe80::1015:c4ff:fe7f:fb79 -> db03::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0x21fc
+    target address db03::1
+03:02:30:716632: host-l_c2-output
+  host-l_c2
+  IP6: 02:fe:dc:50:da:86 -> 12:15:c4:7f:fb:79
+  ICMP6: db03::1 -> fe80::1015:c4ff:fe7f:fb79
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_advertisement checksum 0xd834
+    target address db03::1
+
+Packet 4
+
+03:03:13:852700: af-packet-input
+  af_packet: hw_if_index 1 next-index 4
+    tpacket2_hdr:
+      status 0x1 len 86 snaplen 86 mac 66 net 80
+      sec 0x59b8bad0 nsec 0x3991f355 vlan 0 vlan_tpid 0
+03:03:13:852707: ethernet-input
+  IP6: 02:fe:21:80:d9:84 -> 33:33:00:00:00:01
+03:03:13:852711: ip6-input
+  ICMP6: fe80::fe:21ff:fe80:d984 -> ff02::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP router_advertisement checksum 0x1798
+03:03:13:852714: ip6-mfib-forward-lookup
+  fib 0 entry 4
+03:03:13:852717: ip6-mfib-forward-rpf
+  entry 4 1 Accept,
+03:03:13:852718: ip6-replicate
+  replicate: 2 via [@1]: dpo-receive
+03:03:13:852721: ip6-local
+    ICMP6: fe80::fe:21ff:fe80:d984 -> ff02::1
+      tos 0x00, flow label 0x0, hop limit 255, payload length 32
+    ICMP router_advertisement checksum 0x1798
+03:03:13:852723: ip6-icmp-input
+  ICMP6: fe80::fe:21ff:fe80:d984 -> ff02::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP router_advertisement checksum 0x1798
+03:03:13:852725: icmp6-router-advertisement
+  ICMP6: fe80::fe:21ff:fe80:d984 -> ff02::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP router_advertisement checksum 0x1798
+03:03:13:852727: error-drop
+  ip6-icmp-input: valid packets
+
+vpp#  
+

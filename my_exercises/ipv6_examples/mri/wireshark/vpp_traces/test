@@ -1,0 +1,22 @@
+      if (hdr.ipv6.isValid()) {
+            ipv6_lpm.apply();
+            if (hdr.ip6_hop_by_hop_header.isValid()) {
+            if (!hdr.ip6_hop_by_hop_option.isValid()) {
+
+            //ipv6_lpm.apply();
+            if (!hdr.ioam_trace_hdr.isValid()) {
+                add_ioam_option();
+            }
+
+          } else { // ip6_hop_by_hop_option is NOT VALID CASE 
+             add_ipv6_option();
+             add_ioam_option();
+
+          }
+          } else { // ipv6_hop_by_hop_header is NOT VALID case 
+            add_ipv6_header_option();
+            add_ipv6_option();
+            add_ioam_option();
+          }
+            swid.apply();
+

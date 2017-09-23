@@ -1,0 +1,133 @@
+root@osboxes:/home/osboxes/iOAM/scripts/vpp_sandbox/example/simple-ip6# sudo lxc-attach -n a
+bash-4.3# telnet 0 5002
+Trying 0.0.0.0...
+Connected to 0.
+Escape character is '^]'.
+    _______    _        _   _____  ___ 
+ __/ __/ _ \  (_)__    | | / / _ \/ _ \
+ _/ _// // / / / _ \   | |/ / ___/ ___/
+ /_/ /____(_)_/\___/   |___/_/  /_/    
+
+vpp# clear trace
+vpp# trace add af-packet-input 20 
+vpp# show trace
+------------------- Start of thread 0 vpp_main -------------------
+Packet 1
+
+03:02:25:725990: af-packet-input
+  af_packet: hw_if_index 1 next-index 4
+    tpacket2_hdr:
+      status 0x20000001 len 118 snaplen 118 mac 66 net 80
+      sec 0x59b8baa0 nsec 0x2b8649cf vlan 0 vlan_tpid 0
+03:02:25:725998: ethernet-input
+  IP6: 72:e3:46:0f:22:3d -> 02:fe:dc:c3:60:54
+03:02:25:726010: ip6-input
+  ICMP6: db00::2 -> db03::2
+    tos 0x00, flow label 0x84eeb, hop limit 64, payload length 64
+  ICMP echo_request checksum 0x673f
+03:02:25:726013: ip6-inacl
+  INACL: sw_if_index 1, next_index 1, table 0, offset 192
+03:02:25:726016: ip6-add-hop-by-hop
+  IP6_ADD_HOP_BY_HOP: next index 1
+03:02:25:726017: ip6-lookup
+  fib 0 dpo-idx 4 flow hash: 0x00000000
+  IP6_HOP_BY_HOP_OPTIONS: db00::2 -> db03::2
+    tos 0x00, flow label 0x84eeb, hop limit 64, payload length 104
+03:02:25:726022: ip6-hop-by-hop
+  IP6_HOP_BY_HOP: next index 5 len 40 traced 40  Trace Type 0x9 , 2 elts left
+    [0] ttl 0x0 node id 0x0 ts 0x0 
+
+    [1] ttl 0x0 node id 0x0 ts 0x0 
+
+    [2] ttl 0x40 node id 0x1 ts 0xfe5ee280 
+
+SeqNo = 0x1b4e
+03:02:25:726025: ip6-rewrite
+  tx_sw_if_index 2 adj-idx 4 : ipv6 via db01::2 host-l_a2: 02fe48574e6d02fec169c05f86dd flow hash: 0x00000000
+  00000000: 02fe48574e6d02fec169c05f86dd60084eeb0068003fdb000000000000000000
+  00000020: 000000000002db0300000000000000000000000000023a043b1a090200000000
+  00000040: 00000000000000000000000040000001fe5ee2801d06000000001b4e00008000
+  00000060: 673f00310001a0bab859000000003f240b0000000000101112131415
+03:02:25:726026: host-l_a2-output
+  host-l_a2
+  IP6: 02:fe:c1:69:c0:5f -> 02:fe:48:57:4e:6d
+  IP6_HOP_BY_HOP_OPTIONS: db00::2 -> db03::2
+    tos 0x00, flow label 0x84eeb, hop limit 63, payload length 104
+
+Packet 2
+
+03:02:25:726229: af-packet-input
+  af_packet: hw_if_index 2 next-index 4
+    tpacket2_hdr:
+      status 0x20000001 len 118 snaplen 118 mac 66 net 80
+      sec 0x59b8baa0 nsec 0x2b8a3dca vlan 0 vlan_tpid 0
+03:02:25:726235: ethernet-input
+  IP6: 02:fe:48:57:4e:6d -> 02:fe:c1:69:c0:5f
+03:02:25:726238: ip6-input
+  ICMP6: db03::2 -> db00::2
+    tos 0x00, flow label 0x905eb, hop limit 62, payload length 64
+  ICMP echo_reply checksum 0x663f
+03:02:25:726240: ip6-lookup
+  fib 0 dpo-idx 5 flow hash: 0x00000000
+  ICMP6: db03::2 -> db00::2
+    tos 0x00, flow label 0x905eb, hop limit 62, payload length 64
+  ICMP echo_reply checksum 0x663f
+03:02:25:726242: ip6-rewrite
+  tx_sw_if_index 1 adj-idx 5 : ipv6 via db00::2 host-l_a1: 72e3460f223d02fedcc3605486dd flow hash: 0x00000000
+  00000000: 72e3460f223d02fedcc3605486dd600905eb00403a3ddb030000000000000000
+  00000020: 000000000002db0000000000000000000000000000028100663f00310001a0ba
+  00000040: b859000000003f240b0000000000101112131415161718191a1b1c1d1e1f2021
+  00000060: 22232425262728292a2b2c2d2e2f3031323334353637000000000000
+03:02:25:726243: host-l_a1-output
+  host-l_a1
+  IP6: 02:fe:dc:c3:60:54 -> 72:e3:46:0f:22:3d
+  ICMP6: db03::2 -> db00::2
+    tos 0x00, flow label 0x905eb, hop limit 61, payload length 64
+  ICMP echo_reply checksum 0x663f
+
+Packet 3
+
+03:02:30:886873: af-packet-input
+  af_packet: hw_if_index 1 next-index 4
+    tpacket2_hdr:
+      status 0x1 len 86 snaplen 86 mac 66 net 80
+      sec 0x59b8baa5 nsec 0x347fd01e vlan 0 vlan_tpid 0
+03:02:30:886878: ethernet-input
+  IP6: 72:e3:46:0f:22:3d -> 02:fe:dc:c3:60:54
+03:02:30:886897: ip6-input
+  ICMP6: fe80::70e3:46ff:fe0f:223d -> db00::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0xfc0
+    target address db00::1
+03:02:30:886900: ip6-inacl
+  INACL: sw_if_index 1, next_index 2, table 0, offset -1
+03:02:30:886903: ip6-lookup
+  fib 0 dpo-idx 5 flow hash: 0x00000000
+  ICMP6: fe80::70e3:46ff:fe0f:223d -> db00::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0xfc0
+    target address db00::1
+03:02:30:886905: ip6-local
+    ICMP6: fe80::70e3:46ff:fe0f:223d -> db00::1
+      tos 0x00, flow label 0x0, hop limit 255, payload length 32
+    ICMP neighbor_solicitation checksum 0xfc0
+    target address db00::1
+03:02:30:886907: ip6-icmp-input
+  ICMP6: fe80::70e3:46ff:fe0f:223d -> db00::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0xfc0
+    target address db00::1
+03:02:30:886907: icmp6-neighbor-solicitation
+  ICMP6: fe80::70e3:46ff:fe0f:223d -> db00::1
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_solicitation checksum 0xfc0
+    target address db00::1
+03:02:30:886912: host-l_a1-output
+  host-l_a1
+  IP6: 02:fe:dc:c3:60:54 -> 72:e3:46:0f:22:3d
+  ICMP6: db00::1 -> fe80::70e3:46ff:fe0f:223d
+    tos 0x00, flow label 0x0, hop limit 255, payload length 32
+  ICMP neighbor_advertisement checksum 0x48d9
+    target address db00::1
+
+vpp#   
