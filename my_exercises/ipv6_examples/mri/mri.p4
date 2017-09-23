@@ -8,9 +8,9 @@ const bit<8> IPV6_OPTION_IOAM_TRACE_TYPE = 6;
 const bit<8> HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST = 0x3b; 
 const bit<8>  TRACE_TYPE_TS = 0x09; 
 const bit<8>  MAX_HOP_COUNT = 0x03; 
+const bit<8>  MAX_PAD_COUNT = 0x02; 
 
-/* 22 bytes of ioam header (with currenly fixed 3 as max count) + 2 bytes of padding + 8 bytes of hop by hop header */
-const bit<16> HEADER_LENGTH = 32;
+const bit<16> HEADER_LENGTH = 0x08;
 
 
 /*************************************************************************
@@ -82,6 +82,9 @@ header ioam_trace_ts_t {
   bit<32>    timestamp;
 }
 
+header pad_t {
+   bit<8> padding;
+}
 
 
 struct ingress_metadata_t {
@@ -109,6 +112,7 @@ struct headers {
     ip6_hop_by_hop_option_t ip6_hop_by_hop_option;
     ioam_trace_hdr_t ioam_trace_hdr;
     ioam_trace_ts_t[MAX_HOP_COUNT] ioam_trace_ts; 
+    pad_t[MAX_PAD_COUNT] pad;
 }
 
 error { IPHeaderTooShort }
@@ -232,13 +236,14 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_hdr.setValid();
         hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
         hdr.ip6_hop_by_hop_header.protocol = meta.parser_metadata.ipv6_nextproto;
-        hdr.ip6_hop_by_hop_header.length = 0;
-        // MOST IMPORANT : Modify the PACKET HEADER LENGHT // 
+        hdr.ip6_hop_by_hop_header.length = 1;
         hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST;
+        hdr.ip6_hop_by_hop_option.length = 0x02;
         hdr.ioam_trace_hdr.ioam_trace_type = TRACE_TYPE_TS;
         hdr.ioam_trace_hdr.data_list_elts_added = 0;
-
-
+        // This is the header length which gets added first time , it includes hop_by_hop header , hop_by_hop option, ioam_trace_hdr and pad 
+        //  It doesn't include the ioam_trace_ts which we will be incrementing at each hop by hop 
+        hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
     }
 
 
@@ -248,13 +253,16 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_ts[0].node_id = id;
         hdr.ioam_trace_ts[0].hop_lim = hdr.ipv6.hopLimit;
         hdr.ioam_trace_ts[0].timestamp = 0x123;
+        hdr.pad.push_front(1);
+        hdr.pad[0].padding=0;
+        hdr.pad.push_front(1);
+        hdr.pad[0].padding=0;
         
+        // This includes only the ioam_trace_ts header length which gets added at each node .. it is incremental header length
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
-        hdr.ip6_hop_by_hop_header.length = hdr.ip6_hop_by_hop_header.length + 3;
+        hdr.ip6_hop_by_hop_header.length = hdr.ip6_hop_by_hop_header.length + 1;
+        hdr.ip6_hop_by_hop_option.length = hdr.ip6_hop_by_hop_option.length + 0x08;
 
-        //hdr.ipv4.ihl = hdr.ipv4.ihl + 1;
-        //hdr.ipv4_option.optionLength = hdr.ipv4_option.optionLength + 4;
-       // we need to rewrite the lenght and the padding 
     }
 
 
@@ -315,6 +323,7 @@ control DeparserImpl(packet_out packet, in headers hdr) {
         packet.emit(hdr.ip6_hop_by_hop_option);
         packet.emit(hdr.ioam_trace_hdr);
         packet.emit(hdr.ioam_trace_ts);
+        packet.emit(hdr.pad);
     }
 }
 
