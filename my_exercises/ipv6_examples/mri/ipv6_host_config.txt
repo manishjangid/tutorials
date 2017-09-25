@@ -1,0 +1,41 @@
+We NEED to do these configs on the devices 
+
+
+
+H1 
+
+
+
+
+
+h1 ifconfig h1-eth0 inet6 add 2001::13/96
+
+h1 ip -6 route add default via 2001::1
+
+
+
+
+
+H2 
+
+
+
+
+
+h2 ifconfig h2-eth0 inet6 add 3001::13/96
+
+h2 ip -6 route add default via 3001::1
+
+
+
+
+
+H3 
+
+
+
+h3 ifconfig h3-eth0 inet6 add 4001::13/96
+
+h3 ip -6 route add default via 4001::1
+
+
