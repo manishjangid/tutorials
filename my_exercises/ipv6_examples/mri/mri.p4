@@ -236,7 +236,7 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_hdr.setValid();
         hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
         hdr.ip6_hop_by_hop_header.protocol = meta.parser_metadata.ipv6_nextproto;
-        hdr.ip6_hop_by_hop_header.length = 1;
+        hdr.ip6_hop_by_hop_header.length = 0;
         hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST;
         hdr.ip6_hop_by_hop_option.length = 0x02;
         hdr.ioam_trace_hdr.ioam_trace_type = TRACE_TYPE_TS;
