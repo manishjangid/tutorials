@@ -170,7 +170,6 @@ inout standard_metadata_t standard_metadata) {
     // NEED TO REVISIT THIS //
 
     state parse_ioam_ts_trace_type {
-        packet.extract(hdr.ioam_trace_hdr);
         meta.parser_metadata.elts_left = hdr.ioam_trace_hdr.data_list_elts_added;
         transition select(meta.parser_metadata.elts_left) {
             0 : accept; 
@@ -244,6 +243,10 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         // This is the header length which gets added first time , it includes hop_by_hop header , hop_by_hop option, ioam_trace_hdr and pad 
         //  It doesn't include the ioam_trace_ts which we will be incrementing at each hop by hop 
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
+        hdr.pad.push_front(1);
+        hdr.pad[0].padding=0;
+        hdr.pad.push_front(1);
+        hdr.pad[0].padding=0;
     }
 
 
@@ -253,10 +256,6 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_ts[0].node_id = id;
         hdr.ioam_trace_ts[0].hop_lim = hdr.ipv6.hopLimit;
         hdr.ioam_trace_ts[0].timestamp = 0x123;
-        hdr.pad.push_front(1);
-        hdr.pad[0].padding=0;
-        hdr.pad.push_front(1);
-        hdr.pad[0].padding=0;
         
         // This includes only the ioam_trace_ts header length which gets added at each node .. it is incremental header length
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
