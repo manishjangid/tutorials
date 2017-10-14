@@ -1,0 +1,6 @@
+table_set_default ipv6_lpm drop
+table_set_default ioam_trace add_ioam_trace 1
+table_add ipv6_lpm ipv6_forward 2001::13/96 => 00:aa:00:01:00:01 1
+table_add ipv6_lpm ipv6_forward 3001::13/96 => f2:ed:e6:df:4e:fa 2
+table_add ipv6_lpm ipv6_forward 4001::13/96 => f2:ed:e6:df:4e:fb 3
+
