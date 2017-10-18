@@ -32,7 +32,7 @@ Features supported in the current example
 * IOAM supports multiple data records to be recorded in the packet as the packet traverses the network. These data records offer insights into the operational behavior of the network. 
 
 *  P4 Switch can function as IOAM encapsulating, transit and decapsulating node for the native IPv6 packets.
-   The following information can be collected in the tracing data from the nodes a packet traverses: Ensure that the following dependencies are met before running the INT reference application
+   The following information can be collected in the tracing data from the nodes a packet traverses: 
 
             Node-ID
             Timestamp
@@ -132,23 +132,23 @@ This will start the mininet and the P4 enabled switches.
 After these configs , user can run ping from H1 ('h1 xterm' is the command for getting the terminal for h1) to Host h2. And user can run wireshark at
 S1-eth1 to see the original packet entering the IOAM domain. Then wireshark at S1-eth2 , shows an extra hop-by-hop header has been added in the ipv6 packet which includes the following details
 
-*      header ioam_trace_hdr_t {
+      header ioam_trace_hdr_t {
                  bit<8> ioam_trace_type;
                  bit<8> data_list_elts_added;
        }
   
 
   
-*     header ioam_trace_ts_t {
+     header ioam_trace_ts_t {
                   bit<8>    hop_lim;
                   bit<24>   node_id;
                   bit<32>   timestamp;
       }
 
 
-##Since for this example we have done the incremental IOAM header i.e at each node of IOAM domain , P4 will insert an IOAM trace_ts header and update the elts_added. 
+## Since for this example we have done the incremental IOAM header i.e at each node of IOAM domain , P4 will insert an IOAM trace_ts header and update the elts_added. 
 
-###In the wireshark of Node S1-Eth2 , the Hop-by-hop header has the following info 
+### In the wireshark of Node S1-Eth2 , the Hop-by-hop header has the following info 
   
           09 01 3f00000100000123
   
@@ -170,7 +170,7 @@ S1-eth1 to see the original packet entering the IOAM domain. Then wireshark at S
     
           3e   ioam_trace_ts_t.hoplimit  
    
-          000001  ioam_trace_ts_t.node_id
+          000002  ioam_trace_ts_t.node_id
           00000123 ioam_trace_ts_t.ts 
 
 
