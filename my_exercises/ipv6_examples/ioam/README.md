@@ -4,10 +4,10 @@ Overview
 
 Overview of IOAM can be found in  [**IOAM-Devnet**](https://github.com/ciscodevnet/IOAM)  page. The following IETF drafts detail the motivation and mechanism for recording operational information:
 
-    [**IOAM-ietf-requirements**] (https://tools.ietf.org/html/draft-brockners-inband-oam-requirements-03) - Describes motivation and usecases for IOAM
-    [**IOAM-ietf-data**] (https://tools.ietf.org/html/draft-brockners-inband-oam-data-04)- Describes data records that can be collected using IOAM
-    [**IOAM-ietf-transport**] (https://tools.ietf.org/html/draft-brockners-inband-oam-transport-03) - Lists out the transport protocols and mechanism to carry IOAM data records
-    [**IOAM-ietf-proof-of-transit**] (https://tools.ietf.org/html/draft-brockners-proof-of-transit-03) - Describes the idea of Proof of Transit (POT) and mechanisms to operationalize the idea
+    [**IOAM-ietf-requirements**](https://tools.ietf.org/html/draft-brockners-inband-oam-requirements-03) - Describes motivation and usecases for IOAM
+    [**IOAM-ietf-data**](https://tools.ietf.org/html/draft-brockners-inband-oam-data-04)- Describes data records that can be collected using IOAM
+    [**IOAM-ietf-transport**](https://tools.ietf.org/html/draft-brockners-inband-oam-transport-03) - Lists out the transport protocols and mechanism to carry IOAM data records
+    [**IOAM-ietf-proof-of-transit**](https://tools.ietf.org/html/draft-brockners-proof-of-transit-03) - Describes the idea of Proof of Transit (POT) and mechanisms to operationalize the idea
 
 Terminology
 
@@ -30,8 +30,9 @@ Features supported in the current example
 *  P4 Switch can function as IOAM encapsulating, transit and decapsulating node for the native IPv6 packets.
    The following information can be collected in the tracing data from the nodes a packet traverses: Ensure that the following dependencies are met before running the INT reference application
 
-            Node ID
+            Node-ID
             Timestamp
+            Hop-Count
 	    Hop-Count
 
 Setting up the environment
