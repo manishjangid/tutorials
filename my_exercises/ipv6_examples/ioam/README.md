@@ -4,10 +4,10 @@ Overview
 
 Overview of IOAM can be found in  [**IOAM-Devnet**](https://github.com/ciscodevnet/IOAM)  page. The following IETF drafts detail the motivation and mechanism for recording operational information:
 
-    [**IOAM-ietf-requirements**](https://tools.ietf.org/html/draft-brockners-inband-oam-requirements-03) - Describes motivation and usecases for IOAM
-    [**IOAM-ietf-data**](https://tools.ietf.org/html/draft-brockners-inband-oam-data-04)- Describes data records that can be collected using IOAM
-    [**IOAM-ietf-transport**](https://tools.ietf.org/html/draft-brockners-inband-oam-transport-03) - Lists out the transport protocols and mechanism to carry IOAM data records
-    [**IOAM-ietf-proof-of-transit**](https://tools.ietf.org/html/draft-brockners-proof-of-transit-03) - Describes the idea of Proof of Transit (POT) and mechanisms to operationalize the idea
+[**IOAM-ietf-requirements**](https://tools.ietf.org/html/draft-brockners-inband-oam-requirements-03) - Describes motivation and usecases for IOAM
+[**IOAM-ietf-data**](https://tools.ietf.org/html/draft-brockners-inband-oam-data-04)- Describes data records that can be collected using IOAM
+[**IOAM-ietf-transport**](https://tools.ietf.org/html/draft-brockners-inband-oam-transport-03) - Lists out the transport protocols and mechanism to carry IOAM data records
+[**IOAM-ietf-proof-of-transit**](https://tools.ietf.org/html/draft-brockners-proof-of-transit-03) - Describes the idea of Proof of Transit (POT) and mechanisms to operationalize the idea
 
 Terminology
 
@@ -15,9 +15,9 @@ IOAM is expected to be deployed in a specific domain rather than on the overall 
 
 IOAM data is added to a packet on entering the IOAM-domain and is removed from the packet when exiting the domain. Within the IOAM-domain, network nodes that the packet traverses may update the IOAM data records.
 
-    The node which adds IOAM data to the packet is called the **"IOAM encapsulating node"**.
-    The node which removes the IOAM data is referred to as the **"IOAM decapsulating node"**.
-    Nodes within the domain which are aware of IOAM data and read and/or write or process the IOAM data are called **"IOAM transit nodes"**.
+*    The node which adds IOAM data to the packet is called the **"IOAM encapsulating node"**.
+*    The node which removes the IOAM data is referred to as the **"IOAM decapsulating node"**.
+*    Nodes within the domain which are aware of IOAM data and read and/or write or process the IOAM data are called **"IOAM transit nodes"**.
 
 
 
@@ -33,7 +33,6 @@ Features supported in the current example
             Node-ID
             Timestamp
             Hop-Count
-	    Hop-Count
 
 Setting up the environment
 ==========================
@@ -88,10 +87,10 @@ Test network topology
 
 * IOAM P4 Example
 *        git clone https://github.com/manishjangid/tutorials.git
-*       cd tutorials
+*        cd tutorials
 *        git checkout p4_programs
-*
-        cd my_exercises/ipv6_examples/ioam/
+*        cd my_exercises/ipv6_examples/ioam/
+
 We use mininet to set up a test network for the application. The network is composed of 3 hosts, 3 P4 enabled switches which are acting as IOAM Domain. The following diagram illustrates the topology in greater detail.
 
 !['network topology for IOAM'](wireshark/IOAM_Topology.png)
@@ -133,8 +132,7 @@ S1-eth1 to see the original packet entering the IOAM domain. Then wireshark at S
                   bit<8>    hop_lim;
                   bit<24>   node_id;
                   bit<32>   timestamp;
-     }
-
+      }
 
 
 ##Since for this example we have done the incremental IOAM header i.e at each node of IOAM domain , P4 will insert an IOAM trace_ts header and update the elts_added. 
