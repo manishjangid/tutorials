@@ -5,11 +5,15 @@ Overview
 Overview of IOAM can be found in  [**IOAM-Devnet**](https://github.com/ciscodevnet/IOAM)  page. The following IETF drafts detail the motivation and mechanism for recording operational information:
 
 [**IOAM-ietf-requirements**](https://tools.ietf.org/html/draft-brockners-inband-oam-requirements-03) - Describes motivation and usecases for IOAM
+
 [**IOAM-ietf-data**](https://tools.ietf.org/html/draft-brockners-inband-oam-data-04)- Describes data records that can be collected using IOAM
+
 [**IOAM-ietf-transport**](https://tools.ietf.org/html/draft-brockners-inband-oam-transport-03) - Lists out the transport protocols and mechanism to carry IOAM data records
+
 [**IOAM-ietf-proof-of-transit**](https://tools.ietf.org/html/draft-brockners-proof-of-transit-03) - Describes the idea of Proof of Transit (POT) and mechanisms to operationalize the idea
 
-Terminology
+
+#Terminology
 
 IOAM is expected to be deployed in a specific domain rather than on the overall Internet. The part of the network which employs IOAM is referred to as **"IOAM-domain"**.
 
@@ -86,10 +90,10 @@ Test network topology
 ==========================
 
 * IOAM P4 Example
-*        git clone https://github.com/manishjangid/tutorials.git
-*        cd tutorials
-*        git checkout p4_programs
-*        cd my_exercises/ipv6_examples/ioam/
+        git clone https://github.com/manishjangid/tutorials.git
+        cd tutorials
+        git checkout p4_programs
+        cd my_exercises/ipv6_examples/ioam/
 
 We use mininet to set up a test network for the application. The network is composed of 3 hosts, 3 P4 enabled switches which are acting as IOAM Domain. The following diagram illustrates the topology in greater detail.
 
