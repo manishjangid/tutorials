@@ -129,8 +129,13 @@ This will start the mininet and the P4 enabled switches.
        h3 ifconfig h3-eth0 inet6 add 4001::13/96
        h3 ip -6 route add default via 4001::1
 
-After these configs , user can run ping from H1 ('h1 xterm' is the command for getting the terminal for h1) to Host h2. And user can run wireshark at
-S1-eth1 to see the original packet entering the IOAM domain. Then wireshark at S1-eth2 , shows an extra hop-by-hop header has been added in the ipv6 packet which includes the following details
+After these configs , user can run send native ipv6 packets from H1 ('h1 xterm' is the command for getting the terminal for h1) to Host h2 using the send.py.
+
+       h1 xterm
+       ./send.py 3001::13 "IOAM Example"  (run it from h1's xterm)
+
+And user can run wireshark at S1-eth1 to see the original packet entering the IOAM domain. 
+Then wireshark at S1-eth2 , shows an extra hop-by-hop header has been added in the ipv6 packet which includes the following details
 
       header ioam_trace_hdr_t {
                  bit<8> ioam_trace_type;
