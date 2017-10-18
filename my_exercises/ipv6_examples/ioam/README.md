@@ -10,11 +10,11 @@ Overview of IOAM can be found in  [**IOAM-Devnet**](https://github.com/ciscodevn
 
 [**IOAM-ietf-transport**](https://tools.ietf.org/html/draft-brockners-inband-oam-transport-03) - Lists out the transport protocols and mechanism to carry IOAM data records
 
-[**IOAM-ietf-proof-of-transit**](https://tools.ietf.org/html/draft-brockners-proof-of-transit-03) - Describes the idea of Proof of Transit (POT) and mechanisms to operationalize the idea
+[**IOAM-ietf-proof-of-transit**](https://tools.ietf.org/html/draft-brockners-proof-of-transit-03) - Describes the idea of Proof of Transit (POT) and mechanisms to operationalize the idea.
 
 
-#Terminology
-
+Terminology
+===========
 IOAM is expected to be deployed in a specific domain rather than on the overall Internet. The part of the network which employs IOAM is referred to as **"IOAM-domain"**.
 
 IOAM data is added to a packet on entering the IOAM-domain and is removed from the packet when exiting the domain. Within the IOAM-domain, network nodes that the packet traverses may update the IOAM data records.
@@ -90,9 +90,13 @@ Test network topology
 ==========================
 
 * IOAM P4 Example
+
         git clone https://github.com/manishjangid/tutorials.git
+ 
         cd tutorials
+
         git checkout p4_programs
+
         cd my_exercises/ipv6_examples/ioam/
 
 We use mininet to set up a test network for the application. The network is composed of 3 hosts, 3 P4 enabled switches which are acting as IOAM Domain. The following diagram illustrates the topology in greater detail.
@@ -103,14 +107,17 @@ We use mininet to set up a test network for the application. The network is comp
 Running the reference application
 =================================
 For running the example , just go to 
+
         cd my_exercises/ipv6_examples/ioam/
+
         ./run.sh
 
 
+
 This will start the mininet and the P4 enabled switches. 
-# We Need to do these configs on the devices
+## We need to do these configs on the devicesi from mininet prompt
+
   Run it in mininet shell once, you have executed run.sh script
-## Run the following commands from the MININET prompt 
 
 
        h1 ifconfig h1-eth0 inet6 add 2001::13/96
@@ -154,7 +161,9 @@ S1-eth1 to see the original packet entering the IOAM domain. Then wireshark at S
   
 ### In the wireshark of Node S2-Eth1 , the Hop-by-hop header has the following info 
   
-          0902   3e00000200000123   3f00000100000123  [this 3f00000100000123 is the previous header and we are doing push front which inserts the new header after ipv6 header]
+          0902   3e00000200000123   3f00000100000123  
+                                    [this 3f00000100000123 is the previous header and we are doing push 
+                                     front which inserts the new header after ipv6 header]
 
           09 ioam_trace_hdr.ioam_trace_type 
           02 --> how many IOAM header have been added 
