@@ -89,8 +89,10 @@ header pad_t {
 
 struct ingress_metadata_t {
     bit<16>   count; // for time being count should be max to 30
-   bit<8>     hopLimit;
-
+    bit<8>    hopLimit;
+    bit<9>    ingress_port;
+    bit<9>    egress_port;
+    bit<32>   timestamp;
 }
 
 struct parser_metadata_t {
@@ -212,6 +214,9 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
         hdr.ethernet.dstAddr = dstAddr;
         meta.ingress_metadata.hopLimit = hdr.ipv6.hopLimit;
+        meta.ingress_metadata.ingress_port = standard_metadata.ingress_port;
+        meta.ingress_metadata.egress_port = standard_metadata.egress_port;
+        meta.ingress_metadata.timestamp = (bit<32>)standard_metadata.ingress_global_timestamp;
         hdr.ipv6.hopLimit = hdr.ipv6.hopLimit - 1;
     }
 
@@ -255,7 +260,7 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_ts.push_front(1);
         hdr.ioam_trace_ts[0].node_id = id;
         hdr.ioam_trace_ts[0].hop_lim = hdr.ipv6.hopLimit;
-        hdr.ioam_trace_ts[0].timestamp = 0x123;
+        hdr.ioam_trace_ts[0].timestamp = (bit<32>)standard_metadata.ingress_global_timestamp;
         
         // This includes only the ioam_trace_ts header length which gets added at each node .. it is incremental header length
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
