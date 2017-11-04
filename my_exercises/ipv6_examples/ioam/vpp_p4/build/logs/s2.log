@@ -1,0 +1,1816 @@
+Calling target program-options parser
+[08:13:10.460] [bmv2] [D] [thread 10659] Set default entry for table 'ipv6_lpm': NoAction - 
+Adding interface s2-eth1 as port 1
+[08:13:10.460] [bmv2] [D] [thread 10659] Adding interface s2-eth1 as port 1
+Adding interface s2-eth2 as port 2
+[08:13:10.505] [bmv2] [D] [thread 10659] Adding interface s2-eth2 as port 2
+Adding interface s2-eth3 as port 3
+[08:13:10.544] [bmv2] [D] [thread 10659] Adding interface s2-eth3 as port 3
+Thrift server was started
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Processing packet received on port 1
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Parser 'parser': start
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.624] [bmv2] [T] [thread 10665] [0.0] [cxt 0] Bytes parsed: 14
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.624] [bmv2] [T] [thread 10665] [0.0] [cxt 0] Bytes parsed: 54
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Parser 'parser': end
+[08:13:10.624] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.624] [bmv2] [T] [thread 10665] [0.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.624] [bmv2] [T] [thread 10665] [0.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.625] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.625] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.625] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.625] [bmv2] [T] [thread 10665] [0.0] [cxt 0] Action NoAction
+[08:13:10.625] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.625] [bmv2] [D] [thread 10665] [0.0] [cxt 0] Egress port is 0
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Processing packet received on port 2
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Parser 'parser': start
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.625] [bmv2] [T] [thread 10665] [1.0] [cxt 0] Bytes parsed: 14
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.625] [bmv2] [T] [thread 10665] [1.0] [cxt 0] Bytes parsed: 54
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Parser 'parser': end
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.625] [bmv2] [T] [thread 10665] [1.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.625] [bmv2] [T] [thread 10665] [1.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.625] [bmv2] [T] [thread 10665] [1.0] [cxt 0] Action NoAction
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.625] [bmv2] [D] [thread 10665] [1.0] [cxt 0] Egress port is 0
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Processing packet received on port 2
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Parser 'parser': start
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.625] [bmv2] [T] [thread 10665] [2.0] [cxt 0] Bytes parsed: 14
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.625] [bmv2] [T] [thread 10665] [2.0] [cxt 0] Bytes parsed: 54
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Parser 'parser': end
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.625] [bmv2] [T] [thread 10665] [2.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.625] [bmv2] [T] [thread 10665] [2.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.625] [bmv2] [T] [thread 10665] [2.0] [cxt 0] Action NoAction
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.625] [bmv2] [D] [thread 10665] [2.0] [cxt 0] Egress port is 0
+[08:13:10.625] [bmv2] [D] [thread 10666] [0.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.625] [bmv2] [D] [thread 10666] [0.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.625] [bmv2] [D] [thread 10666] [0.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.625] [bmv2] [D] [thread 10666] [0.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.625] [bmv2] [D] [thread 10666] [0.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.625] [bmv2] [D] [thread 10666] [0.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.625] [bmv2] [D] [thread 10666] [1.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.625] [bmv2] [D] [thread 10666] [1.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.625] [bmv2] [D] [thread 10666] [1.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.625] [bmv2] [D] [thread 10666] [1.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.625] [bmv2] [D] [thread 10666] [1.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.625] [bmv2] [D] [thread 10666] [1.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.625] [bmv2] [D] [thread 10666] [2.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.625] [bmv2] [D] [thread 10666] [2.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.625] [bmv2] [D] [thread 10666] [2.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.625] [bmv2] [D] [thread 10666] [2.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.625] [bmv2] [D] [thread 10666] [2.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.625] [bmv2] [D] [thread 10666] [2.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.625] [bmv2] [D] [thread 10670] [0.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:10.625] [bmv2] [D] [thread 10670] [1.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:10.625] [bmv2] [D] [thread 10670] [2.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Processing packet received on port 2
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser 'parser': start
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.634] [bmv2] [T] [thread 10665] [3.0] [cxt 0] Bytes parsed: 14
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:10.634] [bmv2] [T] [thread 10665] [3.0] [cxt 0] Bytes parsed: 54
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:10.634] [bmv2] [T] [thread 10665] [3.0] [cxt 0] Bytes parsed: 58
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Parser 'parser': end
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.634] [bmv2] [T] [thread 10665] [3.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.634] [bmv2] [T] [thread 10665] [3.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.634] [bmv2] [T] [thread 10665] [3.0] [cxt 0] Action NoAction
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.634] [bmv2] [D] [thread 10665] [3.0] [cxt 0] Egress port is 0
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Processing packet received on port 3
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser 'parser': start
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.634] [bmv2] [T] [thread 10665] [4.0] [cxt 0] Bytes parsed: 14
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:10.634] [bmv2] [T] [thread 10665] [4.0] [cxt 0] Bytes parsed: 54
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:10.634] [bmv2] [T] [thread 10665] [4.0] [cxt 0] Bytes parsed: 58
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Parser 'parser': end
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.634] [bmv2] [T] [thread 10665] [4.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.634] [bmv2] [T] [thread 10665] [4.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:10.634] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.635] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.635] [bmv2] [T] [thread 10665] [4.0] [cxt 0] Action NoAction
+[08:13:10.635] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.635] [bmv2] [D] [thread 10665] [4.0] [cxt 0] Egress port is 0
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:10.635] [bmv2] [D] [thread 10666] [3.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:10.635] [bmv2] [D] [thread 10666] [4.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.635] [bmv2] [D] [thread 10670] [3.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:10.635] [bmv2] [D] [thread 10670] [4.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Processing packet received on port 3
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser 'parser': start
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.645] [bmv2] [T] [thread 10665] [5.0] [cxt 0] Bytes parsed: 14
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:10.645] [bmv2] [T] [thread 10665] [5.0] [cxt 0] Bytes parsed: 54
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:10.645] [bmv2] [T] [thread 10665] [5.0] [cxt 0] Bytes parsed: 58
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Parser 'parser': end
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.645] [bmv2] [T] [thread 10665] [5.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.645] [bmv2] [T] [thread 10665] [5.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.645] [bmv2] [T] [thread 10665] [5.0] [cxt 0] Action NoAction
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.645] [bmv2] [D] [thread 10665] [5.0] [cxt 0] Egress port is 0
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:10.645] [bmv2] [D] [thread 10666] [5.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.645] [bmv2] [D] [thread 10670] [5.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:10.730] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Processing packet received on port 2
+[08:13:10.730] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser 'parser': start
+[08:13:10.730] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.731] [bmv2] [T] [thread 10665] [6.0] [cxt 0] Bytes parsed: 14
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:10.731] [bmv2] [T] [thread 10665] [6.0] [cxt 0] Bytes parsed: 54
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:10.731] [bmv2] [T] [thread 10665] [6.0] [cxt 0] Bytes parsed: 58
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Parser 'parser': end
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.731] [bmv2] [T] [thread 10665] [6.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.731] [bmv2] [T] [thread 10665] [6.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.731] [bmv2] [T] [thread 10665] [6.0] [cxt 0] Action NoAction
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.731] [bmv2] [D] [thread 10665] [6.0] [cxt 0] Egress port is 0
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:10.731] [bmv2] [D] [thread 10666] [6.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.731] [bmv2] [D] [thread 10670] [6.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Processing packet received on port 3
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Parser 'parser': start
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.735] [bmv2] [T] [thread 10665] [7.0] [cxt 0] Bytes parsed: 14
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.735] [bmv2] [T] [thread 10665] [7.0] [cxt 0] Bytes parsed: 54
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Parser 'parser': end
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.735] [bmv2] [T] [thread 10665] [7.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.735] [bmv2] [T] [thread 10665] [7.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.735] [bmv2] [T] [thread 10665] [7.0] [cxt 0] Action NoAction
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.735] [bmv2] [D] [thread 10665] [7.0] [cxt 0] Egress port is 0
+[08:13:10.735] [bmv2] [D] [thread 10666] [7.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.735] [bmv2] [D] [thread 10666] [7.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.735] [bmv2] [D] [thread 10666] [7.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.735] [bmv2] [D] [thread 10666] [7.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.735] [bmv2] [D] [thread 10666] [7.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.735] [bmv2] [D] [thread 10666] [7.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.735] [bmv2] [D] [thread 10670] [7.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Processing packet received on port 3
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser 'parser': start
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.762] [bmv2] [T] [thread 10665] [8.0] [cxt 0] Bytes parsed: 14
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:10.762] [bmv2] [T] [thread 10665] [8.0] [cxt 0] Bytes parsed: 54
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:10.762] [bmv2] [T] [thread 10665] [8.0] [cxt 0] Bytes parsed: 58
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Parser 'parser': end
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.762] [bmv2] [T] [thread 10665] [8.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.762] [bmv2] [T] [thread 10665] [8.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.762] [bmv2] [T] [thread 10665] [8.0] [cxt 0] Action NoAction
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.762] [bmv2] [D] [thread 10665] [8.0] [cxt 0] Egress port is 0
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:10.762] [bmv2] [D] [thread 10666] [8.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.762] [bmv2] [D] [thread 10670] [8.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Processing packet received on port 3
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser 'parser': start
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.773] [bmv2] [T] [thread 10665] [9.0] [cxt 0] Bytes parsed: 14
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:10.773] [bmv2] [T] [thread 10665] [9.0] [cxt 0] Bytes parsed: 54
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:10.773] [bmv2] [T] [thread 10665] [9.0] [cxt 0] Bytes parsed: 58
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Parser 'parser': end
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.773] [bmv2] [T] [thread 10665] [9.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.773] [bmv2] [T] [thread 10665] [9.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.773] [bmv2] [T] [thread 10665] [9.0] [cxt 0] Action NoAction
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.773] [bmv2] [D] [thread 10665] [9.0] [cxt 0] Egress port is 0
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:10.773] [bmv2] [D] [thread 10666] [9.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.773] [bmv2] [D] [thread 10670] [9.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Processing packet received on port 2
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser 'parser': start
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.824] [bmv2] [T] [thread 10665] [10.0] [cxt 0] Bytes parsed: 14
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:10.824] [bmv2] [T] [thread 10665] [10.0] [cxt 0] Bytes parsed: 54
+[08:13:10.824] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:10.825] [bmv2] [T] [thread 10665] [10.0] [cxt 0] Bytes parsed: 58
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Parser 'parser': end
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.825] [bmv2] [T] [thread 10665] [10.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.825] [bmv2] [T] [thread 10665] [10.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.825] [bmv2] [T] [thread 10665] [10.0] [cxt 0] Action NoAction
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.825] [bmv2] [D] [thread 10665] [10.0] [cxt 0] Egress port is 0
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:10.825] [bmv2] [D] [thread 10666] [10.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.825] [bmv2] [D] [thread 10670] [10.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Processing packet received on port 3
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Parser 'parser': start
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.864] [bmv2] [T] [thread 10665] [11.0] [cxt 0] Bytes parsed: 14
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.864] [bmv2] [T] [thread 10665] [11.0] [cxt 0] Bytes parsed: 54
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Parser 'parser': end
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.864] [bmv2] [T] [thread 10665] [11.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.864] [bmv2] [T] [thread 10665] [11.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.864] [bmv2] [T] [thread 10665] [11.0] [cxt 0] Action NoAction
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.864] [bmv2] [D] [thread 10665] [11.0] [cxt 0] Egress port is 0
+[08:13:10.864] [bmv2] [D] [thread 10666] [11.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.864] [bmv2] [D] [thread 10666] [11.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.864] [bmv2] [D] [thread 10666] [11.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.864] [bmv2] [D] [thread 10666] [11.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.864] [bmv2] [D] [thread 10666] [11.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.864] [bmv2] [D] [thread 10666] [11.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.864] [bmv2] [D] [thread 10670] [11.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Processing packet received on port 2
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Parser 'parser': start
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.875] [bmv2] [T] [thread 10665] [12.0] [cxt 0] Bytes parsed: 14
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.875] [bmv2] [T] [thread 10665] [12.0] [cxt 0] Bytes parsed: 54
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Parser 'parser': end
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.875] [bmv2] [T] [thread 10665] [12.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.875] [bmv2] [T] [thread 10665] [12.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.875] [bmv2] [T] [thread 10665] [12.0] [cxt 0] Action NoAction
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.875] [bmv2] [D] [thread 10665] [12.0] [cxt 0] Egress port is 0
+[08:13:10.875] [bmv2] [D] [thread 10666] [12.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.875] [bmv2] [D] [thread 10666] [12.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.875] [bmv2] [D] [thread 10666] [12.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.875] [bmv2] [D] [thread 10666] [12.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.875] [bmv2] [D] [thread 10666] [12.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.875] [bmv2] [D] [thread 10666] [12.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.875] [bmv2] [D] [thread 10670] [12.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Processing packet received on port 2
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Parser 'parser': start
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.875] [bmv2] [T] [thread 10665] [13.0] [cxt 0] Bytes parsed: 14
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.875] [bmv2] [T] [thread 10665] [13.0] [cxt 0] Bytes parsed: 54
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Parser 'parser': end
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.875] [bmv2] [T] [thread 10665] [13.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.875] [bmv2] [T] [thread 10665] [13.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.875] [bmv2] [T] [thread 10665] [13.0] [cxt 0] Action NoAction
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.875] [bmv2] [D] [thread 10665] [13.0] [cxt 0] Egress port is 0
+[08:13:10.875] [bmv2] [D] [thread 10666] [13.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.875] [bmv2] [D] [thread 10666] [13.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.875] [bmv2] [D] [thread 10666] [13.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.875] [bmv2] [D] [thread 10666] [13.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.875] [bmv2] [D] [thread 10666] [13.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.875] [bmv2] [D] [thread 10666] [13.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.875] [bmv2] [D] [thread 10670] [13.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Processing packet received on port 1
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Parser 'parser': start
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.875] [bmv2] [T] [thread 10665] [14.0] [cxt 0] Bytes parsed: 14
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.875] [bmv2] [T] [thread 10665] [14.0] [cxt 0] Bytes parsed: 54
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Parser 'parser': end
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.875] [bmv2] [T] [thread 10665] [14.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.875] [bmv2] [T] [thread 10665] [14.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.875] [bmv2] [T] [thread 10665] [14.0] [cxt 0] Action NoAction
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.875] [bmv2] [D] [thread 10665] [14.0] [cxt 0] Egress port is 0
+[08:13:10.875] [bmv2] [D] [thread 10666] [14.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.875] [bmv2] [D] [thread 10666] [14.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.875] [bmv2] [D] [thread 10666] [14.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.875] [bmv2] [D] [thread 10666] [14.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.875] [bmv2] [D] [thread 10666] [14.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.875] [bmv2] [D] [thread 10666] [14.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.875] [bmv2] [D] [thread 10670] [14.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Processing packet received on port 3
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Parser 'parser': start
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Extracting header 'ethernet'
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:10.909] [bmv2] [T] [thread 10665] [15.0] [cxt 0] Bytes parsed: 14
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Extracting header 'ipv6'
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:10.909] [bmv2] [T] [thread 10665] [15.0] [cxt 0] Bytes parsed: 54
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Parser 'parser': end
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Pipeline 'ingress': start
+[08:13:10.909] [bmv2] [T] [thread 10665] [15.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:10.909] [bmv2] [T] [thread 10665] [15.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Action entry is NoAction - 
+[08:13:10.909] [bmv2] [T] [thread 10665] [15.0] [cxt 0] Action NoAction
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Pipeline 'ingress': end
+[08:13:10.909] [bmv2] [D] [thread 10665] [15.0] [cxt 0] Egress port is 0
+[08:13:10.909] [bmv2] [D] [thread 10666] [15.0] [cxt 0] Pipeline 'egress': start
+[08:13:10.909] [bmv2] [D] [thread 10666] [15.0] [cxt 0] Pipeline 'egress': end
+[08:13:10.909] [bmv2] [D] [thread 10666] [15.0] [cxt 0] Deparser 'deparser': start
+[08:13:10.909] [bmv2] [D] [thread 10666] [15.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:10.909] [bmv2] [D] [thread 10666] [15.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:10.909] [bmv2] [D] [thread 10666] [15.0] [cxt 0] Deparser 'deparser': end
+[08:13:10.910] [bmv2] [D] [thread 10670] [15.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:11.017] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Processing packet received on port 3
+[08:13:11.017] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser 'parser': start
+[08:13:11.017] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.017] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.018] [bmv2] [T] [thread 10665] [16.0] [cxt 0] Bytes parsed: 14
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:11.018] [bmv2] [T] [thread 10665] [16.0] [cxt 0] Bytes parsed: 54
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:11.018] [bmv2] [T] [thread 10665] [16.0] [cxt 0] Bytes parsed: 58
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Parser 'parser': end
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.018] [bmv2] [T] [thread 10665] [16.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.018] [bmv2] [T] [thread 10665] [16.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.018] [bmv2] [T] [thread 10665] [16.0] [cxt 0] Action NoAction
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.018] [bmv2] [D] [thread 10665] [16.0] [cxt 0] Egress port is 0
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:11.018] [bmv2] [D] [thread 10666] [16.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.018] [bmv2] [D] [thread 10670] [16.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Processing packet received on port 3
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Parser 'parser': start
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.037] [bmv2] [T] [thread 10665] [17.0] [cxt 0] Bytes parsed: 14
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.037] [bmv2] [T] [thread 10665] [17.0] [cxt 0] Bytes parsed: 54
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Parser 'parser': end
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.037] [bmv2] [T] [thread 10665] [17.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.037] [bmv2] [T] [thread 10665] [17.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.037] [bmv2] [T] [thread 10665] [17.0] [cxt 0] Action NoAction
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.037] [bmv2] [D] [thread 10665] [17.0] [cxt 0] Egress port is 0
+[08:13:11.038] [bmv2] [D] [thread 10666] [17.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.038] [bmv2] [D] [thread 10666] [17.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.038] [bmv2] [D] [thread 10666] [17.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.038] [bmv2] [D] [thread 10666] [17.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.038] [bmv2] [D] [thread 10666] [17.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.038] [bmv2] [D] [thread 10666] [17.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.038] [bmv2] [D] [thread 10670] [17.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Processing packet received on port 1
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser 'parser': start
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.052] [bmv2] [T] [thread 10665] [18.0] [cxt 0] Bytes parsed: 14
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:11.052] [bmv2] [T] [thread 10665] [18.0] [cxt 0] Bytes parsed: 54
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:11.052] [bmv2] [T] [thread 10665] [18.0] [cxt 0] Bytes parsed: 58
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Parser 'parser': end
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.052] [bmv2] [T] [thread 10665] [18.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.052] [bmv2] [T] [thread 10665] [18.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.052] [bmv2] [T] [thread 10665] [18.0] [cxt 0] Action NoAction
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.052] [bmv2] [D] [thread 10665] [18.0] [cxt 0] Egress port is 0
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:11.052] [bmv2] [D] [thread 10666] [18.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.052] [bmv2] [D] [thread 10670] [18.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Processing packet received on port 2
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Parser 'parser': start
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.078] [bmv2] [T] [thread 10665] [19.0] [cxt 0] Bytes parsed: 14
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.078] [bmv2] [T] [thread 10665] [19.0] [cxt 0] Bytes parsed: 54
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Parser 'parser': end
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.078] [bmv2] [T] [thread 10665] [19.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.078] [bmv2] [T] [thread 10665] [19.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.078] [bmv2] [T] [thread 10665] [19.0] [cxt 0] Action NoAction
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.078] [bmv2] [D] [thread 10665] [19.0] [cxt 0] Egress port is 0
+[08:13:11.078] [bmv2] [D] [thread 10666] [19.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.078] [bmv2] [D] [thread 10666] [19.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.078] [bmv2] [D] [thread 10666] [19.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.078] [bmv2] [D] [thread 10666] [19.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.078] [bmv2] [D] [thread 10666] [19.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.078] [bmv2] [D] [thread 10666] [19.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.078] [bmv2] [D] [thread 10670] [19.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Processing packet received on port 2
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Parser 'parser': start
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.078] [bmv2] [T] [thread 10665] [20.0] [cxt 0] Bytes parsed: 14
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.078] [bmv2] [T] [thread 10665] [20.0] [cxt 0] Bytes parsed: 54
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Parser 'parser': end
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.078] [bmv2] [T] [thread 10665] [20.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.078] [bmv2] [T] [thread 10665] [20.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.078] [bmv2] [T] [thread 10665] [20.0] [cxt 0] Action NoAction
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.078] [bmv2] [D] [thread 10665] [20.0] [cxt 0] Egress port is 0
+[08:13:11.078] [bmv2] [D] [thread 10666] [20.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.078] [bmv2] [D] [thread 10666] [20.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.078] [bmv2] [D] [thread 10666] [20.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.078] [bmv2] [D] [thread 10666] [20.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.078] [bmv2] [D] [thread 10666] [20.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.078] [bmv2] [D] [thread 10666] [20.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.078] [bmv2] [D] [thread 10670] [20.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Processing packet received on port 3
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser 'parser': start
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.082] [bmv2] [T] [thread 10665] [21.0] [cxt 0] Bytes parsed: 14
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:11.082] [bmv2] [T] [thread 10665] [21.0] [cxt 0] Bytes parsed: 54
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:11.082] [bmv2] [T] [thread 10665] [21.0] [cxt 0] Bytes parsed: 58
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Parser 'parser': end
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.082] [bmv2] [T] [thread 10665] [21.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.082] [bmv2] [T] [thread 10665] [21.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.082] [bmv2] [T] [thread 10665] [21.0] [cxt 0] Action NoAction
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.082] [bmv2] [D] [thread 10665] [21.0] [cxt 0] Egress port is 0
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:11.082] [bmv2] [D] [thread 10666] [21.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.082] [bmv2] [D] [thread 10670] [21.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Processing packet received on port 1
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Parser 'parser': start
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.129] [bmv2] [T] [thread 10665] [22.0] [cxt 0] Bytes parsed: 14
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.129] [bmv2] [T] [thread 10665] [22.0] [cxt 0] Bytes parsed: 54
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Parser 'parser': end
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.129] [bmv2] [T] [thread 10665] [22.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.129] [bmv2] [T] [thread 10665] [22.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.129] [bmv2] [T] [thread 10665] [22.0] [cxt 0] Action NoAction
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.129] [bmv2] [D] [thread 10665] [22.0] [cxt 0] Egress port is 0
+[08:13:11.129] [bmv2] [D] [thread 10666] [22.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.129] [bmv2] [D] [thread 10666] [22.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.129] [bmv2] [D] [thread 10666] [22.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.129] [bmv2] [D] [thread 10666] [22.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.129] [bmv2] [D] [thread 10666] [22.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.129] [bmv2] [D] [thread 10666] [22.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.129] [bmv2] [D] [thread 10670] [22.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Processing packet received on port 3
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Parser 'parser': start
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.160] [bmv2] [T] [thread 10665] [23.0] [cxt 0] Bytes parsed: 14
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.160] [bmv2] [T] [thread 10665] [23.0] [cxt 0] Bytes parsed: 54
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Parser 'parser': end
+[08:13:11.160] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.160] [bmv2] [T] [thread 10665] [23.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.160] [bmv2] [T] [thread 10665] [23.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.161] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.161] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.161] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.161] [bmv2] [T] [thread 10665] [23.0] [cxt 0] Action NoAction
+[08:13:11.161] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.161] [bmv2] [D] [thread 10665] [23.0] [cxt 0] Egress port is 0
+[08:13:11.161] [bmv2] [D] [thread 10666] [23.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.161] [bmv2] [D] [thread 10666] [23.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.161] [bmv2] [D] [thread 10666] [23.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.161] [bmv2] [D] [thread 10666] [23.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.161] [bmv2] [D] [thread 10666] [23.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.161] [bmv2] [D] [thread 10666] [23.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.161] [bmv2] [D] [thread 10670] [23.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Processing packet received on port 2
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Parser 'parser': start
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.194] [bmv2] [T] [thread 10665] [24.0] [cxt 0] Bytes parsed: 14
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.194] [bmv2] [T] [thread 10665] [24.0] [cxt 0] Bytes parsed: 54
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Parser 'parser': end
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.194] [bmv2] [T] [thread 10665] [24.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.194] [bmv2] [T] [thread 10665] [24.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.194] [bmv2] [T] [thread 10665] [24.0] [cxt 0] Action NoAction
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.194] [bmv2] [D] [thread 10665] [24.0] [cxt 0] Egress port is 0
+[08:13:11.194] [bmv2] [D] [thread 10666] [24.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.194] [bmv2] [D] [thread 10666] [24.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.194] [bmv2] [D] [thread 10666] [24.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.194] [bmv2] [D] [thread 10666] [24.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.194] [bmv2] [D] [thread 10666] [24.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.194] [bmv2] [D] [thread 10666] [24.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.194] [bmv2] [D] [thread 10670] [24.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Processing packet received on port 2
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Parser 'parser': start
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.195] [bmv2] [T] [thread 10665] [25.0] [cxt 0] Bytes parsed: 14
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.195] [bmv2] [T] [thread 10665] [25.0] [cxt 0] Bytes parsed: 54
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Parser 'parser': end
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.195] [bmv2] [T] [thread 10665] [25.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.195] [bmv2] [T] [thread 10665] [25.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.195] [bmv2] [T] [thread 10665] [25.0] [cxt 0] Action NoAction
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.195] [bmv2] [D] [thread 10665] [25.0] [cxt 0] Egress port is 0
+[08:13:11.195] [bmv2] [D] [thread 10666] [25.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.195] [bmv2] [D] [thread 10666] [25.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.195] [bmv2] [D] [thread 10666] [25.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.195] [bmv2] [D] [thread 10666] [25.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.195] [bmv2] [D] [thread 10666] [25.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.195] [bmv2] [D] [thread 10666] [25.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.195] [bmv2] [D] [thread 10670] [25.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Processing packet received on port 3
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Parser 'parser': start
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.289] [bmv2] [T] [thread 10665] [26.0] [cxt 0] Bytes parsed: 14
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.289] [bmv2] [T] [thread 10665] [26.0] [cxt 0] Bytes parsed: 54
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Parser 'parser': end
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.289] [bmv2] [T] [thread 10665] [26.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.289] [bmv2] [T] [thread 10665] [26.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.289] [bmv2] [T] [thread 10665] [26.0] [cxt 0] Action NoAction
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.289] [bmv2] [D] [thread 10665] [26.0] [cxt 0] Egress port is 0
+[08:13:11.289] [bmv2] [D] [thread 10666] [26.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.289] [bmv2] [D] [thread 10666] [26.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.289] [bmv2] [D] [thread 10666] [26.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.289] [bmv2] [D] [thread 10666] [26.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.289] [bmv2] [D] [thread 10666] [26.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.289] [bmv2] [D] [thread 10666] [26.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.289] [bmv2] [D] [thread 10670] [26.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Processing packet received on port 1
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser 'parser': start
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.305] [bmv2] [T] [thread 10665] [27.0] [cxt 0] Bytes parsed: 14
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:11.305] [bmv2] [T] [thread 10665] [27.0] [cxt 0] Bytes parsed: 54
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:11.305] [bmv2] [T] [thread 10665] [27.0] [cxt 0] Bytes parsed: 58
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Parser 'parser': end
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.305] [bmv2] [T] [thread 10665] [27.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.305] [bmv2] [T] [thread 10665] [27.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.305] [bmv2] [T] [thread 10665] [27.0] [cxt 0] Action NoAction
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.305] [bmv2] [D] [thread 10665] [27.0] [cxt 0] Egress port is 0
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:11.305] [bmv2] [D] [thread 10666] [27.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.305] [bmv2] [D] [thread 10670] [27.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Processing packet received on port 1
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Parser 'parser': start
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.329] [bmv2] [T] [thread 10665] [28.0] [cxt 0] Bytes parsed: 14
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.329] [bmv2] [T] [thread 10665] [28.0] [cxt 0] Bytes parsed: 54
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Parser 'parser': end
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.329] [bmv2] [T] [thread 10665] [28.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.329] [bmv2] [T] [thread 10665] [28.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.329] [bmv2] [T] [thread 10665] [28.0] [cxt 0] Action NoAction
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.329] [bmv2] [D] [thread 10665] [28.0] [cxt 0] Egress port is 0
+[08:13:11.329] [bmv2] [D] [thread 10666] [28.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.329] [bmv2] [D] [thread 10666] [28.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.329] [bmv2] [D] [thread 10666] [28.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.329] [bmv2] [D] [thread 10666] [28.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.329] [bmv2] [D] [thread 10666] [28.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.329] [bmv2] [D] [thread 10666] [28.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.329] [bmv2] [D] [thread 10670] [28.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Processing packet received on port 3
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Parser 'parser': start
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.412] [bmv2] [T] [thread 10665] [29.0] [cxt 0] Bytes parsed: 14
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.412] [bmv2] [T] [thread 10665] [29.0] [cxt 0] Bytes parsed: 54
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Parser 'parser': end
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.412] [bmv2] [T] [thread 10665] [29.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.412] [bmv2] [T] [thread 10665] [29.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.412] [bmv2] [T] [thread 10665] [29.0] [cxt 0] Action NoAction
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.412] [bmv2] [D] [thread 10665] [29.0] [cxt 0] Egress port is 0
+[08:13:11.412] [bmv2] [D] [thread 10666] [29.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.412] [bmv2] [D] [thread 10666] [29.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.412] [bmv2] [D] [thread 10666] [29.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.412] [bmv2] [D] [thread 10666] [29.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.412] [bmv2] [D] [thread 10666] [29.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.412] [bmv2] [D] [thread 10666] [29.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.412] [bmv2] [D] [thread 10670] [29.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Processing packet received on port 1
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Parser 'parser': start
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.451] [bmv2] [T] [thread 10665] [30.0] [cxt 0] Bytes parsed: 14
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.451] [bmv2] [T] [thread 10665] [30.0] [cxt 0] Bytes parsed: 54
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Parser 'parser': end
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.451] [bmv2] [T] [thread 10665] [30.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.451] [bmv2] [T] [thread 10665] [30.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.451] [bmv2] [T] [thread 10665] [30.0] [cxt 0] Action NoAction
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.451] [bmv2] [D] [thread 10665] [30.0] [cxt 0] Egress port is 0
+[08:13:11.451] [bmv2] [D] [thread 10666] [30.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.451] [bmv2] [D] [thread 10666] [30.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.451] [bmv2] [D] [thread 10666] [30.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.451] [bmv2] [D] [thread 10666] [30.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.451] [bmv2] [D] [thread 10666] [30.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.451] [bmv2] [D] [thread 10666] [30.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.451] [bmv2] [D] [thread 10670] [30.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Processing packet received on port 3
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser 'parser': start
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.464] [bmv2] [T] [thread 10665] [31.0] [cxt 0] Bytes parsed: 14
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:11.464] [bmv2] [T] [thread 10665] [31.0] [cxt 0] Bytes parsed: 54
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:11.464] [bmv2] [T] [thread 10665] [31.0] [cxt 0] Bytes parsed: 58
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Parser 'parser': end
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.464] [bmv2] [T] [thread 10665] [31.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.464] [bmv2] [T] [thread 10665] [31.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.464] [bmv2] [T] [thread 10665] [31.0] [cxt 0] Action NoAction
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.464] [bmv2] [D] [thread 10665] [31.0] [cxt 0] Egress port is 0
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:11.465] [bmv2] [D] [thread 10666] [31.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.465] [bmv2] [D] [thread 10670] [31.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Processing packet received on port 3
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser 'parser': start
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.529] [bmv2] [T] [thread 10665] [32.0] [cxt 0] Bytes parsed: 14
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:11.529] [bmv2] [T] [thread 10665] [32.0] [cxt 0] Bytes parsed: 54
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:11.529] [bmv2] [T] [thread 10665] [32.0] [cxt 0] Bytes parsed: 58
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Parser 'parser': end
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.529] [bmv2] [T] [thread 10665] [32.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.529] [bmv2] [T] [thread 10665] [32.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.529] [bmv2] [T] [thread 10665] [32.0] [cxt 0] Action NoAction
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.529] [bmv2] [D] [thread 10665] [32.0] [cxt 0] Egress port is 0
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:11.529] [bmv2] [D] [thread 10666] [32.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.529] [bmv2] [D] [thread 10670] [32.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Processing packet received on port 3
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Parser 'parser': start
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.539] [bmv2] [T] [thread 10665] [33.0] [cxt 0] Bytes parsed: 14
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.539] [bmv2] [T] [thread 10665] [33.0] [cxt 0] Bytes parsed: 54
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Parser 'parser': end
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.539] [bmv2] [T] [thread 10665] [33.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.539] [bmv2] [T] [thread 10665] [33.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.539] [bmv2] [T] [thread 10665] [33.0] [cxt 0] Action NoAction
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.539] [bmv2] [D] [thread 10665] [33.0] [cxt 0] Egress port is 0
+[08:13:11.539] [bmv2] [D] [thread 10666] [33.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.539] [bmv2] [D] [thread 10666] [33.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.539] [bmv2] [D] [thread 10666] [33.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.539] [bmv2] [D] [thread 10666] [33.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.539] [bmv2] [D] [thread 10666] [33.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.539] [bmv2] [D] [thread 10666] [33.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.539] [bmv2] [D] [thread 10670] [33.0] [cxt 0] Transmitting packet of size 213 out of port 0
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Processing packet received on port 3
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Parser 'parser': start
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.614] [bmv2] [T] [thread 10665] [34.0] [cxt 0] Bytes parsed: 14
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.614] [bmv2] [T] [thread 10665] [34.0] [cxt 0] Bytes parsed: 54
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Parser 'parser': end
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.614] [bmv2] [T] [thread 10665] [34.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.614] [bmv2] [T] [thread 10665] [34.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.614] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.615] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.615] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.615] [bmv2] [T] [thread 10665] [34.0] [cxt 0] Action NoAction
+[08:13:11.615] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.615] [bmv2] [D] [thread 10665] [34.0] [cxt 0] Egress port is 0
+[08:13:11.615] [bmv2] [D] [thread 10666] [34.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.615] [bmv2] [D] [thread 10666] [34.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.615] [bmv2] [D] [thread 10666] [34.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.615] [bmv2] [D] [thread 10666] [34.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.615] [bmv2] [D] [thread 10666] [34.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.615] [bmv2] [D] [thread 10666] [34.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.615] [bmv2] [D] [thread 10670] [34.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Processing packet received on port 3
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Parser 'parser': start
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.736] [bmv2] [T] [thread 10665] [35.0] [cxt 0] Bytes parsed: 14
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.736] [bmv2] [T] [thread 10665] [35.0] [cxt 0] Bytes parsed: 54
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Parser 'parser': end
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.736] [bmv2] [T] [thread 10665] [35.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.736] [bmv2] [T] [thread 10665] [35.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.736] [bmv2] [T] [thread 10665] [35.0] [cxt 0] Action NoAction
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.736] [bmv2] [D] [thread 10665] [35.0] [cxt 0] Egress port is 0
+[08:13:11.736] [bmv2] [D] [thread 10666] [35.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.736] [bmv2] [D] [thread 10666] [35.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.736] [bmv2] [D] [thread 10666] [35.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.736] [bmv2] [D] [thread 10666] [35.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.736] [bmv2] [D] [thread 10666] [35.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.736] [bmv2] [D] [thread 10666] [35.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.736] [bmv2] [D] [thread 10670] [35.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Processing packet received on port 3
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Parser 'parser': start
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Extracting header 'ethernet'
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:11.741] [bmv2] [T] [thread 10665] [36.0] [cxt 0] Bytes parsed: 14
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Extracting header 'ipv6'
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:11.741] [bmv2] [T] [thread 10665] [36.0] [cxt 0] Bytes parsed: 54
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Parser 'parser': end
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Pipeline 'ingress': start
+[08:13:11.741] [bmv2] [T] [thread 10665] [36.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:11.741] [bmv2] [T] [thread 10665] [36.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Action entry is NoAction - 
+[08:13:11.741] [bmv2] [T] [thread 10665] [36.0] [cxt 0] Action NoAction
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Pipeline 'ingress': end
+[08:13:11.741] [bmv2] [D] [thread 10665] [36.0] [cxt 0] Egress port is 0
+[08:13:11.741] [bmv2] [D] [thread 10666] [36.0] [cxt 0] Pipeline 'egress': start
+[08:13:11.741] [bmv2] [D] [thread 10666] [36.0] [cxt 0] Pipeline 'egress': end
+[08:13:11.741] [bmv2] [D] [thread 10666] [36.0] [cxt 0] Deparser 'deparser': start
+[08:13:11.741] [bmv2] [D] [thread 10666] [36.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:11.741] [bmv2] [D] [thread 10666] [36.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:11.741] [bmv2] [D] [thread 10666] [36.0] [cxt 0] Deparser 'deparser': end
+[08:13:11.741] [bmv2] [D] [thread 10670] [36.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Processing packet received on port 2
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Parser 'parser': start
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Extracting header 'ethernet'
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:12.299] [bmv2] [T] [thread 10665] [37.0] [cxt 0] Bytes parsed: 14
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Extracting header 'ipv6'
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:12.299] [bmv2] [T] [thread 10665] [37.0] [cxt 0] Bytes parsed: 54
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Parser 'parser': end
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Pipeline 'ingress': start
+[08:13:12.299] [bmv2] [T] [thread 10665] [37.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:12.299] [bmv2] [T] [thread 10665] [37.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Action entry is NoAction - 
+[08:13:12.299] [bmv2] [T] [thread 10665] [37.0] [cxt 0] Action NoAction
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Pipeline 'ingress': end
+[08:13:12.299] [bmv2] [D] [thread 10665] [37.0] [cxt 0] Egress port is 0
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Processing packet received on port 2
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Parser 'parser': start
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Extracting header 'ethernet'
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:12.299] [bmv2] [T] [thread 10665] [38.0] [cxt 0] Bytes parsed: 14
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Extracting header 'ipv6'
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:12.299] [bmv2] [T] [thread 10665] [38.0] [cxt 0] Bytes parsed: 54
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Parser 'parser': end
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Pipeline 'ingress': start
+[08:13:12.299] [bmv2] [T] [thread 10665] [38.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:12.299] [bmv2] [T] [thread 10665] [38.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Action entry is NoAction - 
+[08:13:12.299] [bmv2] [T] [thread 10665] [38.0] [cxt 0] Action NoAction
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Pipeline 'ingress': end
+[08:13:12.299] [bmv2] [D] [thread 10665] [38.0] [cxt 0] Egress port is 0
+[08:13:12.299] [bmv2] [D] [thread 10666] [37.0] [cxt 0] Pipeline 'egress': start
+[08:13:12.299] [bmv2] [D] [thread 10666] [37.0] [cxt 0] Pipeline 'egress': end
+[08:13:12.299] [bmv2] [D] [thread 10666] [37.0] [cxt 0] Deparser 'deparser': start
+[08:13:12.299] [bmv2] [D] [thread 10666] [37.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:12.299] [bmv2] [D] [thread 10666] [37.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:12.299] [bmv2] [D] [thread 10666] [37.0] [cxt 0] Deparser 'deparser': end
+[08:13:12.300] [bmv2] [D] [thread 10666] [38.0] [cxt 0] Pipeline 'egress': start
+[08:13:12.300] [bmv2] [D] [thread 10666] [38.0] [cxt 0] Pipeline 'egress': end
+[08:13:12.300] [bmv2] [D] [thread 10666] [38.0] [cxt 0] Deparser 'deparser': start
+[08:13:12.300] [bmv2] [D] [thread 10666] [38.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:12.300] [bmv2] [D] [thread 10666] [38.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:12.300] [bmv2] [D] [thread 10666] [38.0] [cxt 0] Deparser 'deparser': end
+[08:13:12.300] [bmv2] [D] [thread 10670] [37.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:12.300] [bmv2] [D] [thread 10670] [38.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:12.550] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Processing packet received on port 1
+[08:13:12.550] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Parser 'parser': start
+[08:13:12.550] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Extracting header 'ethernet'
+[08:13:12.550] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:12.550] [bmv2] [T] [thread 10665] [39.0] [cxt 0] Bytes parsed: 14
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Extracting header 'ipv6'
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:12.551] [bmv2] [T] [thread 10665] [39.0] [cxt 0] Bytes parsed: 54
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Parser 'parser': end
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Pipeline 'ingress': start
+[08:13:12.551] [bmv2] [T] [thread 10665] [39.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:12.551] [bmv2] [T] [thread 10665] [39.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Action entry is NoAction - 
+[08:13:12.551] [bmv2] [T] [thread 10665] [39.0] [cxt 0] Action NoAction
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Pipeline 'ingress': end
+[08:13:12.551] [bmv2] [D] [thread 10665] [39.0] [cxt 0] Egress port is 0
+[08:13:12.551] [bmv2] [D] [thread 10666] [39.0] [cxt 0] Pipeline 'egress': start
+[08:13:12.551] [bmv2] [D] [thread 10666] [39.0] [cxt 0] Pipeline 'egress': end
+[08:13:12.551] [bmv2] [D] [thread 10666] [39.0] [cxt 0] Deparser 'deparser': start
+[08:13:12.551] [bmv2] [D] [thread 10666] [39.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:12.551] [bmv2] [D] [thread 10666] [39.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:12.551] [bmv2] [D] [thread 10666] [39.0] [cxt 0] Deparser 'deparser': end
+[08:13:12.551] [bmv2] [D] [thread 10670] [39.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Processing packet received on port 3
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Parser 'parser': start
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Extracting header 'ethernet'
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:12.834] [bmv2] [T] [thread 10665] [40.0] [cxt 0] Bytes parsed: 14
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Extracting header 'ipv6'
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:12.834] [bmv2] [T] [thread 10665] [40.0] [cxt 0] Bytes parsed: 54
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Parser 'parser': end
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Pipeline 'ingress': start
+[08:13:12.834] [bmv2] [T] [thread 10665] [40.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:12.834] [bmv2] [T] [thread 10665] [40.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Action entry is NoAction - 
+[08:13:12.834] [bmv2] [T] [thread 10665] [40.0] [cxt 0] Action NoAction
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Pipeline 'ingress': end
+[08:13:12.834] [bmv2] [D] [thread 10665] [40.0] [cxt 0] Egress port is 0
+[08:13:12.834] [bmv2] [D] [thread 10666] [40.0] [cxt 0] Pipeline 'egress': start
+[08:13:12.834] [bmv2] [D] [thread 10666] [40.0] [cxt 0] Pipeline 'egress': end
+[08:13:12.834] [bmv2] [D] [thread 10666] [40.0] [cxt 0] Deparser 'deparser': start
+[08:13:12.834] [bmv2] [D] [thread 10666] [40.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:12.834] [bmv2] [D] [thread 10666] [40.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:12.834] [bmv2] [D] [thread 10666] [40.0] [cxt 0] Deparser 'deparser': end
+[08:13:12.834] [bmv2] [D] [thread 10670] [40.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Processing packet received on port 3
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Parser 'parser': start
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Extracting header 'ethernet'
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:12.963] [bmv2] [T] [thread 10665] [41.0] [cxt 0] Bytes parsed: 14
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Extracting header 'ipv6'
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:12.963] [bmv2] [T] [thread 10665] [41.0] [cxt 0] Bytes parsed: 54
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Parser 'parser': end
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Pipeline 'ingress': start
+[08:13:12.963] [bmv2] [T] [thread 10665] [41.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:12.963] [bmv2] [T] [thread 10665] [41.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Action entry is NoAction - 
+[08:13:12.963] [bmv2] [T] [thread 10665] [41.0] [cxt 0] Action NoAction
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Pipeline 'ingress': end
+[08:13:12.963] [bmv2] [D] [thread 10665] [41.0] [cxt 0] Egress port is 0
+[08:13:12.963] [bmv2] [D] [thread 10666] [41.0] [cxt 0] Pipeline 'egress': start
+[08:13:12.963] [bmv2] [D] [thread 10666] [41.0] [cxt 0] Pipeline 'egress': end
+[08:13:12.963] [bmv2] [D] [thread 10666] [41.0] [cxt 0] Deparser 'deparser': start
+[08:13:12.963] [bmv2] [D] [thread 10666] [41.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:12.963] [bmv2] [D] [thread 10666] [41.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:12.963] [bmv2] [D] [thread 10666] [41.0] [cxt 0] Deparser 'deparser': end
+[08:13:12.963] [bmv2] [D] [thread 10670] [41.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:13.194] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Processing packet received on port 2
+[08:13:13.194] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Parser 'parser': start
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.195] [bmv2] [T] [thread 10665] [42.0] [cxt 0] Bytes parsed: 14
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:13.195] [bmv2] [T] [thread 10665] [42.0] [cxt 0] Bytes parsed: 54
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Parser 'parser': end
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.195] [bmv2] [T] [thread 10665] [42.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.195] [bmv2] [T] [thread 10665] [42.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.195] [bmv2] [T] [thread 10665] [42.0] [cxt 0] Action NoAction
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.195] [bmv2] [D] [thread 10665] [42.0] [cxt 0] Egress port is 0
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Processing packet received on port 2
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Parser 'parser': start
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.195] [bmv2] [T] [thread 10665] [43.0] [cxt 0] Bytes parsed: 14
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:13.195] [bmv2] [T] [thread 10665] [43.0] [cxt 0] Bytes parsed: 54
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Parser 'parser': end
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.195] [bmv2] [T] [thread 10665] [43.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.195] [bmv2] [T] [thread 10665] [43.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.195] [bmv2] [T] [thread 10665] [43.0] [cxt 0] Action NoAction
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.195] [bmv2] [D] [thread 10665] [43.0] [cxt 0] Egress port is 0
+[08:13:13.195] [bmv2] [D] [thread 10666] [42.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.195] [bmv2] [D] [thread 10666] [42.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.195] [bmv2] [D] [thread 10666] [42.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.195] [bmv2] [D] [thread 10666] [42.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.195] [bmv2] [D] [thread 10666] [42.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.195] [bmv2] [D] [thread 10666] [42.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.195] [bmv2] [D] [thread 10666] [43.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.195] [bmv2] [D] [thread 10666] [43.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.195] [bmv2] [D] [thread 10666] [43.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.195] [bmv2] [D] [thread 10666] [43.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.195] [bmv2] [D] [thread 10666] [43.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.195] [bmv2] [D] [thread 10666] [43.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.195] [bmv2] [D] [thread 10670] [42.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:13.195] [bmv2] [D] [thread 10670] [43.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Processing packet received on port 1
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Parser 'parser': start
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.453] [bmv2] [T] [thread 10665] [44.0] [cxt 0] Bytes parsed: 14
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:13.453] [bmv2] [T] [thread 10665] [44.0] [cxt 0] Bytes parsed: 54
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Parser 'parser': end
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.453] [bmv2] [T] [thread 10665] [44.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.453] [bmv2] [T] [thread 10665] [44.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.453] [bmv2] [T] [thread 10665] [44.0] [cxt 0] Action NoAction
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.453] [bmv2] [D] [thread 10665] [44.0] [cxt 0] Egress port is 0
+[08:13:13.453] [bmv2] [D] [thread 10666] [44.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.454] [bmv2] [D] [thread 10666] [44.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.454] [bmv2] [D] [thread 10666] [44.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.454] [bmv2] [D] [thread 10666] [44.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.454] [bmv2] [D] [thread 10666] [44.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.454] [bmv2] [D] [thread 10666] [44.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.454] [bmv2] [D] [thread 10670] [44.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Processing packet received on port 1
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser 'parser': start
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.478] [bmv2] [T] [thread 10665] [45.0] [cxt 0] Bytes parsed: 14
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:13.478] [bmv2] [T] [thread 10665] [45.0] [cxt 0] Bytes parsed: 54
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:13.478] [bmv2] [T] [thread 10665] [45.0] [cxt 0] Bytes parsed: 58
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Parser 'parser': end
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.478] [bmv2] [T] [thread 10665] [45.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.478] [bmv2] [T] [thread 10665] [45.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.478] [bmv2] [T] [thread 10665] [45.0] [cxt 0] Action NoAction
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.478] [bmv2] [D] [thread 10665] [45.0] [cxt 0] Egress port is 0
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Processing packet received on port 1
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser 'parser': start
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.478] [bmv2] [T] [thread 10665] [46.0] [cxt 0] Bytes parsed: 14
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:13.478] [bmv2] [T] [thread 10665] [46.0] [cxt 0] Bytes parsed: 54
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:13.478] [bmv2] [T] [thread 10665] [46.0] [cxt 0] Bytes parsed: 58
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Parser 'parser': end
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.478] [bmv2] [T] [thread 10665] [46.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.478] [bmv2] [T] [thread 10665] [46.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.478] [bmv2] [T] [thread 10665] [46.0] [cxt 0] Action NoAction
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.478] [bmv2] [D] [thread 10665] [46.0] [cxt 0] Egress port is 0
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:13.478] [bmv2] [D] [thread 10666] [45.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.478] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.478] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.478] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.478] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.479] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.479] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:13.479] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:13.479] [bmv2] [D] [thread 10666] [46.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.479] [bmv2] [D] [thread 10670] [45.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[08:13:13.479] [bmv2] [D] [thread 10670] [46.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Processing packet received on port 1
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Parser 'parser': start
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.603] [bmv2] [T] [thread 10665] [47.0] [cxt 0] Bytes parsed: 14
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (58)
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[08:13:13.603] [bmv2] [T] [thread 10665] [47.0] [cxt 0] Bytes parsed: 54
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Parser 'parser': end
+[08:13:13.603] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.603] [bmv2] [T] [thread 10665] [47.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.603] [bmv2] [T] [thread 10665] [47.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.604] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000001ff000002
+
+[08:13:13.604] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.604] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.604] [bmv2] [T] [thread 10665] [47.0] [cxt 0] Action NoAction
+[08:13:13.604] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.604] [bmv2] [D] [thread 10665] [47.0] [cxt 0] Egress port is 0
+[08:13:13.604] [bmv2] [D] [thread 10666] [47.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.604] [bmv2] [D] [thread 10666] [47.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.604] [bmv2] [D] [thread 10666] [47.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.604] [bmv2] [D] [thread 10666] [47.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.604] [bmv2] [D] [thread 10666] [47.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.604] [bmv2] [D] [thread 10666] [47.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.605] [bmv2] [D] [thread 10670] [47.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Processing packet received on port 1
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser 'parser': start
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.660] [bmv2] [T] [thread 10665] [48.0] [cxt 0] Bytes parsed: 14
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:13.660] [bmv2] [T] [thread 10665] [48.0] [cxt 0] Bytes parsed: 54
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:13.660] [bmv2] [T] [thread 10665] [48.0] [cxt 0] Bytes parsed: 58
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Parser 'parser': end
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.660] [bmv2] [T] [thread 10665] [48.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.660] [bmv2] [T] [thread 10665] [48.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.660] [bmv2] [T] [thread 10665] [48.0] [cxt 0] Action NoAction
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.660] [bmv2] [D] [thread 10665] [48.0] [cxt 0] Egress port is 0
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:13.660] [bmv2] [D] [thread 10666] [48.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.660] [bmv2] [D] [thread 10670] [48.0] [cxt 0] Transmitting packet of size 110 out of port 0
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Processing packet received on port 3
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Parser 'parser': start
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Extracting header 'ethernet'
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:13.800] [bmv2] [T] [thread 10665] [49.0] [cxt 0] Bytes parsed: 14
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Extracting header 'ipv6'
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:13.800] [bmv2] [T] [thread 10665] [49.0] [cxt 0] Bytes parsed: 54
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Parser 'parser': end
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Pipeline 'ingress': start
+[08:13:13.800] [bmv2] [T] [thread 10665] [49.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:13.800] [bmv2] [T] [thread 10665] [49.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Action entry is NoAction - 
+[08:13:13.800] [bmv2] [T] [thread 10665] [49.0] [cxt 0] Action NoAction
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Pipeline 'ingress': end
+[08:13:13.800] [bmv2] [D] [thread 10665] [49.0] [cxt 0] Egress port is 0
+[08:13:13.800] [bmv2] [D] [thread 10666] [49.0] [cxt 0] Pipeline 'egress': start
+[08:13:13.800] [bmv2] [D] [thread 10666] [49.0] [cxt 0] Pipeline 'egress': end
+[08:13:13.800] [bmv2] [D] [thread 10666] [49.0] [cxt 0] Deparser 'deparser': start
+[08:13:13.800] [bmv2] [D] [thread 10666] [49.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:13.800] [bmv2] [D] [thread 10666] [49.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:13.800] [bmv2] [D] [thread 10666] [49.0] [cxt 0] Deparser 'deparser': end
+[08:13:13.800] [bmv2] [D] [thread 10670] [49.0] [cxt 0] Transmitting packet of size 107 out of port 0
+[08:13:14.219] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Processing packet received on port 1
+[08:13:14.219] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser 'parser': start
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Extracting header 'ethernet'
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:14.220] [bmv2] [T] [thread 10665] [50.0] [cxt 0] Bytes parsed: 14
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Extracting header 'ipv6'
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:14.220] [bmv2] [T] [thread 10665] [50.0] [cxt 0] Bytes parsed: 54
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:14.220] [bmv2] [T] [thread 10665] [50.0] [cxt 0] Bytes parsed: 58
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Parser 'parser': end
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Pipeline 'ingress': start
+[08:13:14.220] [bmv2] [T] [thread 10665] [50.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:14.220] [bmv2] [T] [thread 10665] [50.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Action entry is NoAction - 
+[08:13:14.220] [bmv2] [T] [thread 10665] [50.0] [cxt 0] Action NoAction
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Pipeline 'ingress': end
+[08:13:14.220] [bmv2] [D] [thread 10665] [50.0] [cxt 0] Egress port is 0
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Pipeline 'egress': start
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Pipeline 'egress': end
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Deparser 'deparser': start
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:14.220] [bmv2] [D] [thread 10666] [50.0] [cxt 0] Deparser 'deparser': end
+[08:13:14.220] [bmv2] [D] [thread 10670] [50.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Processing packet received on port 2
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Parser 'parser': start
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Extracting header 'ethernet'
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:14.521] [bmv2] [T] [thread 10665] [51.0] [cxt 0] Bytes parsed: 14
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Extracting header 'ipv6'
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:14.521] [bmv2] [T] [thread 10665] [51.0] [cxt 0] Bytes parsed: 54
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Parser 'parser': end
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Pipeline 'ingress': start
+[08:13:14.521] [bmv2] [T] [thread 10665] [51.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:14.521] [bmv2] [T] [thread 10665] [51.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Action entry is NoAction - 
+[08:13:14.521] [bmv2] [T] [thread 10665] [51.0] [cxt 0] Action NoAction
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Pipeline 'ingress': end
+[08:13:14.521] [bmv2] [D] [thread 10665] [51.0] [cxt 0] Egress port is 0
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Processing packet received on port 2
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Parser 'parser': start
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Extracting header 'ethernet'
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:14.521] [bmv2] [T] [thread 10665] [52.0] [cxt 0] Bytes parsed: 14
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Extracting header 'ipv6'
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:14.521] [bmv2] [T] [thread 10665] [52.0] [cxt 0] Bytes parsed: 54
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Parser 'parser': end
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Pipeline 'ingress': start
+[08:13:14.521] [bmv2] [T] [thread 10665] [52.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:14.521] [bmv2] [T] [thread 10665] [52.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Action entry is NoAction - 
+[08:13:14.521] [bmv2] [T] [thread 10665] [52.0] [cxt 0] Action NoAction
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Pipeline 'ingress': end
+[08:13:14.521] [bmv2] [D] [thread 10665] [52.0] [cxt 0] Egress port is 0
+[08:13:14.521] [bmv2] [D] [thread 10666] [51.0] [cxt 0] Pipeline 'egress': start
+[08:13:14.521] [bmv2] [D] [thread 10666] [51.0] [cxt 0] Pipeline 'egress': end
+[08:13:14.521] [bmv2] [D] [thread 10666] [51.0] [cxt 0] Deparser 'deparser': start
+[08:13:14.521] [bmv2] [D] [thread 10666] [51.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:14.521] [bmv2] [D] [thread 10666] [51.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:14.522] [bmv2] [D] [thread 10666] [51.0] [cxt 0] Deparser 'deparser': end
+[08:13:14.522] [bmv2] [D] [thread 10666] [52.0] [cxt 0] Pipeline 'egress': start
+[08:13:14.522] [bmv2] [D] [thread 10666] [52.0] [cxt 0] Pipeline 'egress': end
+[08:13:14.522] [bmv2] [D] [thread 10666] [52.0] [cxt 0] Deparser 'deparser': start
+[08:13:14.522] [bmv2] [D] [thread 10666] [52.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:14.522] [bmv2] [D] [thread 10666] [52.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:14.522] [bmv2] [D] [thread 10666] [52.0] [cxt 0] Deparser 'deparser': end
+[08:13:14.522] [bmv2] [D] [thread 10670] [51.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:14.522] [bmv2] [D] [thread 10670] [52.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Processing packet received on port 1
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser 'parser': start
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Extracting header 'ethernet'
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:14.635] [bmv2] [T] [thread 10665] [53.0] [cxt 0] Bytes parsed: 14
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Extracting header 'ipv6'
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:14.635] [bmv2] [T] [thread 10665] [53.0] [cxt 0] Bytes parsed: 54
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:14.635] [bmv2] [T] [thread 10665] [53.0] [cxt 0] Bytes parsed: 58
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Parser 'parser': end
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Pipeline 'ingress': start
+[08:13:14.635] [bmv2] [T] [thread 10665] [53.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:14.635] [bmv2] [T] [thread 10665] [53.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Action entry is NoAction - 
+[08:13:14.635] [bmv2] [T] [thread 10665] [53.0] [cxt 0] Action NoAction
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Pipeline 'ingress': end
+[08:13:14.635] [bmv2] [D] [thread 10665] [53.0] [cxt 0] Egress port is 0
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Processing packet received on port 1
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Parser 'parser': start
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Extracting header 'ethernet'
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:14.635] [bmv2] [T] [thread 10665] [54.0] [cxt 0] Bytes parsed: 14
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Extracting header 'ipv6'
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (58)
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[08:13:14.635] [bmv2] [T] [thread 10665] [54.0] [cxt 0] Bytes parsed: 54
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Parser 'parser': end
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Pipeline 'ingress': start
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Pipeline 'egress': start
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Pipeline 'egress': end
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Deparser 'deparser': start
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:14.635] [bmv2] [T] [thread 10665] [54.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:14.635] [bmv2] [T] [thread 10665] [54.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000002
+
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:14.635] [bmv2] [D] [thread 10666] [53.0] [cxt 0] Deparser 'deparser': end
+[08:13:14.635] [bmv2] [D] [thread 10670] [53.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Action entry is NoAction - 
+[08:13:14.635] [bmv2] [T] [thread 10665] [54.0] [cxt 0] Action NoAction
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Pipeline 'ingress': end
+[08:13:14.635] [bmv2] [D] [thread 10665] [54.0] [cxt 0] Egress port is 0
+[08:13:14.635] [bmv2] [D] [thread 10666] [54.0] [cxt 0] Pipeline 'egress': start
+[08:13:14.635] [bmv2] [D] [thread 10666] [54.0] [cxt 0] Pipeline 'egress': end
+[08:13:14.635] [bmv2] [D] [thread 10666] [54.0] [cxt 0] Deparser 'deparser': start
+[08:13:14.635] [bmv2] [D] [thread 10666] [54.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:14.635] [bmv2] [D] [thread 10666] [54.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:14.635] [bmv2] [D] [thread 10666] [54.0] [cxt 0] Deparser 'deparser': end
+[08:13:14.635] [bmv2] [D] [thread 10670] [54.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Processing packet received on port 1
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Parser 'parser': start
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Extracting header 'ethernet'
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:14.773] [bmv2] [T] [thread 10665] [55.0] [cxt 0] Bytes parsed: 14
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Extracting header 'ipv6'
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:14.773] [bmv2] [T] [thread 10665] [55.0] [cxt 0] Bytes parsed: 54
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Parser 'parser': end
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Pipeline 'ingress': start
+[08:13:14.773] [bmv2] [T] [thread 10665] [55.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:14.773] [bmv2] [T] [thread 10665] [55.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Action entry is NoAction - 
+[08:13:14.773] [bmv2] [T] [thread 10665] [55.0] [cxt 0] Action NoAction
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Pipeline 'ingress': end
+[08:13:14.773] [bmv2] [D] [thread 10665] [55.0] [cxt 0] Egress port is 0
+[08:13:14.773] [bmv2] [D] [thread 10666] [55.0] [cxt 0] Pipeline 'egress': start
+[08:13:14.773] [bmv2] [D] [thread 10666] [55.0] [cxt 0] Pipeline 'egress': end
+[08:13:14.773] [bmv2] [D] [thread 10666] [55.0] [cxt 0] Deparser 'deparser': start
+[08:13:14.773] [bmv2] [D] [thread 10666] [55.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:14.773] [bmv2] [D] [thread 10666] [55.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:14.773] [bmv2] [D] [thread 10666] [55.0] [cxt 0] Deparser 'deparser': end
+[08:13:14.773] [bmv2] [D] [thread 10670] [55.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Processing packet received on port 3
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Parser 'parser': start
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Extracting header 'ethernet'
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:15.055] [bmv2] [T] [thread 10665] [56.0] [cxt 0] Bytes parsed: 14
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Extracting header 'ipv6'
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:15.055] [bmv2] [T] [thread 10665] [56.0] [cxt 0] Bytes parsed: 54
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Parser 'parser': end
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Pipeline 'ingress': start
+[08:13:15.055] [bmv2] [T] [thread 10665] [56.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:15.055] [bmv2] [T] [thread 10665] [56.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Action entry is NoAction - 
+[08:13:15.055] [bmv2] [T] [thread 10665] [56.0] [cxt 0] Action NoAction
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Pipeline 'ingress': end
+[08:13:15.055] [bmv2] [D] [thread 10665] [56.0] [cxt 0] Egress port is 0
+[08:13:15.055] [bmv2] [D] [thread 10666] [56.0] [cxt 0] Pipeline 'egress': start
+[08:13:15.055] [bmv2] [D] [thread 10666] [56.0] [cxt 0] Pipeline 'egress': end
+[08:13:15.055] [bmv2] [D] [thread 10666] [56.0] [cxt 0] Deparser 'deparser': start
+[08:13:15.055] [bmv2] [D] [thread 10666] [56.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:15.055] [bmv2] [D] [thread 10666] [56.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:15.055] [bmv2] [D] [thread 10666] [56.0] [cxt 0] Deparser 'deparser': end
+[08:13:15.055] [bmv2] [D] [thread 10670] [56.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Processing packet received on port 3
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Parser 'parser': start
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Extracting header 'ethernet'
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:15.185] [bmv2] [T] [thread 10665] [57.0] [cxt 0] Bytes parsed: 14
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Extracting header 'ipv6'
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (17)
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[08:13:15.185] [bmv2] [T] [thread 10665] [57.0] [cxt 0] Bytes parsed: 54
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Parser 'parser': end
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Pipeline 'ingress': start
+[08:13:15.185] [bmv2] [T] [thread 10665] [57.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:15.185] [bmv2] [T] [thread 10665] [57.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff0200000000000000000000000000fb
+
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Action entry is NoAction - 
+[08:13:15.185] [bmv2] [T] [thread 10665] [57.0] [cxt 0] Action NoAction
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Pipeline 'ingress': end
+[08:13:15.185] [bmv2] [D] [thread 10665] [57.0] [cxt 0] Egress port is 0
+[08:13:15.185] [bmv2] [D] [thread 10666] [57.0] [cxt 0] Pipeline 'egress': start
+[08:13:15.185] [bmv2] [D] [thread 10666] [57.0] [cxt 0] Pipeline 'egress': end
+[08:13:15.185] [bmv2] [D] [thread 10666] [57.0] [cxt 0] Deparser 'deparser': start
+[08:13:15.185] [bmv2] [D] [thread 10666] [57.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:15.185] [bmv2] [D] [thread 10666] [57.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:15.185] [bmv2] [D] [thread 10666] [57.0] [cxt 0] Deparser 'deparser': end
+[08:13:15.185] [bmv2] [D] [thread 10670] [57.0] [cxt 0] Transmitting packet of size 201 out of port 0
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Processing packet received on port 1
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser 'parser': start
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Extracting header 'ethernet'
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser state 'start': key is 86dd
+[08:13:15.529] [bmv2] [T] [thread 10665] [58.0] [cxt 0] Bytes parsed: 14
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Extracting header 'ipv6'
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser set: setting field 'parser_metadata.ipv6_nextproto' from field 'ipv6.nextHdr' (0)
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[08:13:15.529] [bmv2] [T] [thread 10665] [58.0] [cxt 0] Bytes parsed: 54
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Extracting header 'ip6_hop_by_hop_header'
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser set: setting field 'parser_metadata.nextprotocol' from field 'ip6_hop_by_hop_header.protocol' (58)
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser set: setting field 'parser_metadata.nextlength' from field 'ip6_hop_by_hop_header.length' (0)
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Extracting header 'ip6_hop_by_hop_option'
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser state 'parse_ipv6_hop_by_hop': key is 05
+[08:13:15.529] [bmv2] [T] [thread 10665] [58.0] [cxt 0] Bytes parsed: 58
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Parser 'parser': end
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Pipeline 'ingress': start
+[08:13:15.529] [bmv2] [T] [thread 10665] [58.0] [cxt 0] ioam_demo.p4(281) Condition "hdr.ipv6.isValid()" is true
+[08:13:15.529] [bmv2] [T] [thread 10665] [58.0] [cxt 0] Applying table 'ipv6_lpm'
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Looking up key:
+* ipv6.dstAddr        : ff020000000000000000000000000016
+
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Table 'ipv6_lpm': miss
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Action entry is NoAction - 
+[08:13:15.529] [bmv2] [T] [thread 10665] [58.0] [cxt 0] Action NoAction
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Pipeline 'ingress': end
+[08:13:15.529] [bmv2] [D] [thread 10665] [58.0] [cxt 0] Egress port is 0
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Pipeline 'egress': start
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Pipeline 'egress': end
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Deparser 'deparser': start
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Deparsing header 'ethernet'
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Deparsing header 'ipv6'
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_header'
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Deparsing header 'ip6_hop_by_hop_option'
+[08:13:15.529] [bmv2] [D] [thread 10666] [58.0] [cxt 0] Deparser 'deparser': end
+[08:13:15.529] [bmv2] [D] [thread 10670] [58.0] [cxt 0] Transmitting packet of size 90 out of port 0
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory

@@ -89,8 +89,10 @@ header pad_t {
 
 struct ingress_metadata_t {
     bit<16>   count; // for time being count should be max to 30
-   bit<8>     hopLimit;
-
+    bit<8>    hopLimit;
+    bit<9>    ingress_port;
+    bit<9>    egress_port;
+    bit<32>   timestamp;
 }
 
 struct parser_metadata_t {
@@ -170,7 +172,6 @@ inout standard_metadata_t standard_metadata) {
     // NEED TO REVISIT THIS //
 
     state parse_ioam_ts_trace_type {
-        packet.extract(hdr.ioam_trace_hdr);
         meta.parser_metadata.elts_left = hdr.ioam_trace_hdr.data_list_elts_added;
         transition select(meta.parser_metadata.elts_left) {
             0 : accept; 
@@ -210,9 +211,12 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
 
     action ipv6_forward(macAddr_t dstAddr, egressSpec_t port) {
         standard_metadata.egress_spec = port;
-        hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
-        hdr.ethernet.dstAddr = dstAddr;
+        //hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
+        //hdr.ethernet.dstAddr = dstAddr;
         meta.ingress_metadata.hopLimit = hdr.ipv6.hopLimit;
+        meta.ingress_metadata.ingress_port = standard_metadata.ingress_port;
+        meta.ingress_metadata.egress_port = standard_metadata.egress_port;
+        meta.ingress_metadata.timestamp = (bit<32>)standard_metadata.ingress_global_timestamp;
         hdr.ipv6.hopLimit = hdr.ipv6.hopLimit - 1;
     }
 
@@ -236,7 +240,7 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_hdr.setValid();
         hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
         hdr.ip6_hop_by_hop_header.protocol = meta.parser_metadata.ipv6_nextproto;
-        hdr.ip6_hop_by_hop_header.length = 1;
+        hdr.ip6_hop_by_hop_header.length = 0;
         hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST;
         hdr.ip6_hop_by_hop_option.length = 0x02;
         hdr.ioam_trace_hdr.ioam_trace_type = TRACE_TYPE_TS;
@@ -244,6 +248,10 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         // This is the header length which gets added first time , it includes hop_by_hop header , hop_by_hop option, ioam_trace_hdr and pad 
         //  It doesn't include the ioam_trace_ts which we will be incrementing at each hop by hop 
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
+        hdr.pad.push_front(1);
+        hdr.pad[0].padding=0;
+        hdr.pad.push_front(1);
+        hdr.pad[0].padding=0;
     }
 
 
@@ -252,11 +260,7 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_ts.push_front(1);
         hdr.ioam_trace_ts[0].node_id = id;
         hdr.ioam_trace_ts[0].hop_lim = hdr.ipv6.hopLimit;
-        hdr.ioam_trace_ts[0].timestamp = 0x123;
-        hdr.pad.push_front(1);
-        hdr.pad[0].padding=0;
-        hdr.pad.push_front(1);
-        hdr.pad[0].padding=0;
+        hdr.ioam_trace_ts[0].timestamp = (bit<32>)standard_metadata.ingress_global_timestamp;
         
         // This includes only the ioam_trace_ts header length which gets added at each node .. it is incremental header length
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
@@ -281,9 +285,9 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
                  (!hdr.ip6_hop_by_hop_option.isValid()) ||
                  (!hdr.ioam_trace_hdr.isValid())) {
                  
-                       add_ioam_option();
+                     //  add_ioam_option();
               }
-              ioam_trace.apply();
+              //ioam_trace.apply();
 
           }
       }
