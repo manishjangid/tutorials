@@ -211,8 +211,8 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
 
     action ipv6_forward(macAddr_t dstAddr, egressSpec_t port) {
         standard_metadata.egress_spec = port;
-        //hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
-        //hdr.ethernet.dstAddr = dstAddr;
+        hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
+        hdr.ethernet.dstAddr = dstAddr;
         meta.ingress_metadata.hopLimit = hdr.ipv6.hopLimit;
         meta.ingress_metadata.ingress_port = standard_metadata.ingress_port;
         meta.ingress_metadata.egress_port = standard_metadata.egress_port;
