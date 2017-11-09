@@ -1,0 +1,4 @@
+table_set_default ipv6_lpm drop
+table_set_default ioam_trace add_ioam_trace 2
+table_add ipv6_lpm ipv6_forward db05::2/64 => 02:fe:db:7e:c9:0a 2
+table_add ipv6_lpm ipv6_forward db00::2/64 => 02:fe:27:ae:1b:49 1
