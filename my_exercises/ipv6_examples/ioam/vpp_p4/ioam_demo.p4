@@ -249,16 +249,6 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
     }
 
     action update_ioam_option_pad() {
-       //hdr.ip6_hop_by_hop_header.setValid();
-       //hdr.ip6_hop_by_hop_option.setValid();
-       //hdr.ioam_trace_hdr.setValid();
-       //hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
-       //hdr.ip6_hop_by_hop_header.protocol = meta.parser_metadata.ipv6_nextproto;
-       //hdr.ip6_hop_by_hop_header.length = 0;
-       //hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST;
-       //hdr.ip6_hop_by_hop_option.length = 0x02;
-       //hdr.ioam_trace_hdr.ioam_trace_type = TRACE_TYPE_TS;
-       //hdr.ioam_trace_hdr.data_list_elts_added = 0;
         // This is the header length which gets added first time , it includes hop_by_hop header  (2 bytes) , hop_by_hop option (2 bytes), ioam_trace_hdr (2 bytes) and pad (2 bytes)
         //  It doesn't include the ioam_trace_ts which we will be incrementing at each hop by hop
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + INC_IOAM_HEADER_LENGTH;
@@ -318,15 +308,9 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
              * all ipv6 traffic irrespective of ioam header being inserted or not */
             ipv6_lpm.apply();
 
-              if ((hdr.ip6_hop_by_hop_header.isValid()) && 
-                  (hdr.ip6_hop_by_hop_option.isValid()) && 
-                          (hdr.ip6_hop_by_hop_option.type != HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST))  { 
-
-                  add_inc_ioam_option();
-              } else {
+              if (!hdr.ioam_trace_hdr.isValid()) {
                   add_inc_ioam_option();
                   update_ioam_option_pad();
-
               }
               ioam_trace.apply();
 
