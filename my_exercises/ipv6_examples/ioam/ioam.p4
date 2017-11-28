@@ -5,12 +5,14 @@
 const bit<16> TYPE_IPV6 = 0x86DD;
 const bit<8>  IPV6_HOP_BY_HOP = 0;
 const bit<8> IPV6_OPTION_IOAM_TRACE_TYPE = 6;
-const bit<8> HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST = 0x3b; 
+const bit<8> HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST = 0x3d;
 const bit<8>  TRACE_TYPE_TS = 0x09; 
 const bit<8>  MAX_HOP_COUNT = 0x03; 
-const bit<8>  MAX_PAD_COUNT = 0x02; 
+const bit<8>  MAX_HOP_BY_HOP_PAD_INIT = 0x02; 
+const bit<8>  MAX_HOP_BY_HOP_PAD_COUNT = 0x04; 
 
 const bit<16> HEADER_LENGTH = 0x08;
+const bit<16> INC_IOAM_HEADER_LENGTH = 0x04;
 
 
 /*************************************************************************
@@ -96,10 +98,8 @@ struct ingress_metadata_t {
 }
 
 struct parser_metadata_t {
-    bit<8>   elts_left;
+    bit<8>   elts_added;
     bit<8>   ipv6_nextproto;
-    bit<8>   nextprotocol;
-    bit<8>   nextlength;
 }
 
 struct metadata {
@@ -114,7 +114,32 @@ struct headers {
     ip6_hop_by_hop_option_t ip6_hop_by_hop_option;
     ioam_trace_hdr_t ioam_trace_hdr;
     ioam_trace_ts_t[MAX_HOP_COUNT] ioam_trace_ts; 
-    pad_t[MAX_PAD_COUNT] pad;
+
+    /* This padding "pad1" will be used only when IPV6 packet doesn't have any 
+     * HOP_BY_HOP extension header inserted in it. In all cases , we have to 
+     * to make sure that the header inserted in the pkt should be multiples of
+     * an octet . In this case it will be 14 bytes so we need to need to insert
+     * a padding od two bytes. Headers added are explained below :
+     * ip6_hop_by_hop_header header which is of 2 bytes + 
+     * ip6_hop_by_hop_option header which is 2 bytes + 
+     * ioam_trace_hdr , which is also 2 bytes 
+     *  ioam_trace_ts which is 8 bytes
+     */ 
+
+
+    pad_t[MAX_HOP_BY_HOP_PAD_INIT] pad1;
+
+    /* This padding "pad2" will be used only when Ipv6 packet already has some 
+     * Hop by HOP header , it can be of any type , not necessarily IOAM Trace 
+     * header. In that case we need to insert the hop by hop header + ioam 
+     * header which is of 12 byte , which means we need to insert 4 byte . 
+     * Headers added are explained below :
+     * ip6_hop_by_hop_option header which is 2 bytes + 
+     * ioam_trace_hdr , which is also 2 bytes + 
+     * ioam_trace_ts which is 8 bytes
+     */
+ 
+    pad_t[MAX_HOP_BY_HOP_PAD_COUNT] pad2;
 }
 
 error { IPHeaderTooShort }
@@ -132,6 +157,10 @@ inout standard_metadata_t standard_metadata) {
         transition parse_ethernet;
     }
 
+    /* PARSER for parsing in ethernet packet for Ipv6 packet , rest of the packets , just accept 
+     * and go for fowarding
+     */
+
     state parse_ethernet {
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType) {
@@ -140,28 +169,38 @@ inout standard_metadata_t standard_metadata) {
         }
     }
 
+    /* PARSER for parsing theipv6 packet for HOP BY HOP header* 
+     * if its a HOP_BY_HOP header , then parse it further for the IOAM Header *
+     * ELSE accept it and go for fowarding 
+     */
+
     state parse_ipv6 {
         packet.extract(hdr.ipv6);
         meta.parser_metadata.ipv6_nextproto = hdr.ipv6.nextHdr;
         transition select(hdr.ipv6.nextHdr) {
            IPV6_HOP_BY_HOP: parse_ipv6_hop_by_hop;
-           default: accept; //We should check in case of the ingress if the ip hop by hop header exists , then we need to add it , just like mri_header
+           default: accept;
         }
     }
 
 
+    /* PARSER for parsing the HOP_BY_HOP header in the IPV6 header for knowing
+     * the trace TYPE   * 
+     * if its HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST type , * 
+     * then parse it further for the IOAM TRACE Header *
+     * ELSE accept it and go for fowarding 
+     */
+
     state parse_ipv6_hop_by_hop {
         packet.extract(hdr.ip6_hop_by_hop_header);
-        meta.parser_metadata.nextprotocol = hdr.ip6_hop_by_hop_header.protocol;
-        meta.parser_metadata.nextlength = hdr.ip6_hop_by_hop_header.length;
-        packet.extract(hdr.ip6_hop_by_hop_option);
-        transition select(hdr.ip6_hop_by_hop_option.type) {
-            HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST: parse_ioam_trace_data_list;
-            default: accept;
+        transition select(packet.lookahead<ip6_hop_by_hop_option_t>().type) {
+           HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST: parse_ioam_trace_data_list;
+           default: accept;
         }
     }
 
     state parse_ioam_trace_data_list {
+        packet.extract(hdr.ip6_hop_by_hop_option);
         packet.extract(hdr.ioam_trace_hdr);
         transition select(hdr.ioam_trace_hdr.ioam_trace_type) {
             TRACE_TYPE_TS : parse_ioam_ts_trace_type;
@@ -169,11 +208,10 @@ inout standard_metadata_t standard_metadata) {
         }
     }
 
-    // NEED TO REVISIT THIS //
 
     state parse_ioam_ts_trace_type {
-        meta.parser_metadata.elts_left = hdr.ioam_trace_hdr.data_list_elts_added;
-        transition select(meta.parser_metadata.elts_left) {
+        meta.parser_metadata.elts_added = hdr.ioam_trace_hdr.data_list_elts_added;
+        transition select(meta.parser_metadata.elts_added) {
             0 : accept; 
             default: parse_ioam_trace_ts;
         }
@@ -181,9 +219,9 @@ inout standard_metadata_t standard_metadata) {
 
     state parse_ioam_trace_ts {
         packet.extract(hdr.ioam_trace_ts.next);
-        meta.parser_metadata.elts_left = meta.parser_metadata.elts_left  - 1;
-        transition select(meta.parser_metadata.elts_left) {
-            0 : accept;   // NEED TO CHECK IF THIS NEEDS TO BE ZERO or -1 //
+        meta.parser_metadata.elts_added = meta.parser_metadata.elts_added  - 1;
+        transition select(meta.parser_metadata.elts_added) {
+            0 : accept;
             default: parse_ioam_trace_ts;
         }
     }
@@ -233,25 +271,81 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         size = 1024;
         default_action = NoAction();
     }
+    
+   /* This is the case when we need to add the IPV6 hop by header along with *
+    * option header and ioam header. This is when P4 node is the First node *
+    * to insert the IOAM trace header and packet doesn't have any hop_by_hop *
+    * header in it .
+    */
 
-    action add_ioam_option() {
+    action add_ipv6_hop_by_hop_and_ioam_option() {
         hdr.ip6_hop_by_hop_header.setValid();
         hdr.ip6_hop_by_hop_option.setValid();
         hdr.ioam_trace_hdr.setValid();
         hdr.ipv6.nextHdr = IPV6_HOP_BY_HOP;
         hdr.ip6_hop_by_hop_header.protocol = meta.parser_metadata.ipv6_nextproto;
         hdr.ip6_hop_by_hop_header.length = 0;
-        hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_TRACE_DATA_LIST;
+        hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST;
         hdr.ip6_hop_by_hop_option.length = 0x02;
         hdr.ioam_trace_hdr.ioam_trace_type = TRACE_TYPE_TS;
         hdr.ioam_trace_hdr.data_list_elts_added = 0;
         // This is the header length which gets added first time , it includes hop_by_hop header , hop_by_hop option, ioam_trace_hdr and pad 
         //  It doesn't include the ioam_trace_ts which we will be incrementing at each hop by hop 
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
-        hdr.pad.push_front(1);
-        hdr.pad[0].padding=0;
-        hdr.pad.push_front(1);
-        hdr.pad[0].padding=0;
+        hdr.pad1.push_front(1);
+        hdr.pad1[0].padding=0;
+        hdr.pad1.push_front(1);
+        hdr.pad1[0].padding=0;
+    }
+
+
+   /* This is the case when we need to add the INCREMENTAL trace header in the *
+    * hop_by_hop option header and ioam header. This is when P4 node is either *
+    * the first node after the VPP node which has inserted the Trace header or *
+    * Some other hop_by_hop header is added in the ipv6 packet before it reaches *
+    * to the p4 node *
+    */
+
+    action add_inc_ioam_option() {
+        hdr.ip6_hop_by_hop_option.setValid();
+        hdr.ioam_trace_hdr.setValid();
+        hdr.ip6_hop_by_hop_option.type = HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST;
+        hdr.ip6_hop_by_hop_option.length = 0x02;
+        hdr.ioam_trace_hdr.ioam_trace_type = TRACE_TYPE_TS;
+        hdr.ioam_trace_hdr.data_list_elts_added = 0;
+
+        /* This is the header length which gets added first time *
+         * it includes hop_by_hop option (2 bytes), ioam_trace_hdr (2 bytes)
+         * It doesn't include the ioam_trace_ts which we will be incrementing 
+         * at each hop by hop
+         */
+
+        hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + INC_IOAM_HEADER_LENGTH;
+
+        /* Updating the Payload length for accomodating the padding required . 
+         * The Extension header for ipv6 must be in the octets of 8 .
+         * Currently with the incremental header insertion , we will be adding the 
+         * ip6_hop_by_hop_option header which is 2 bytes +  
+         * ioam_trace_hdr , which is also 2 bytes +  ioam_trace_ts which is 8 bytes 
+         * Overall we inserted 12 bytes , so we have to add another 4 bytes to make it 
+         * alligned with 8 ocets . This logic is only for the first time when we insert 
+         * the ioam incremental header .
+         * At the next node , it just needs to update the ioam_trace_ts which is 8 bytes.
+         * hence such padding or allignment is not required .
+         */
+
+        hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + INC_IOAM_HEADER_LENGTH;
+        hdr.ip6_hop_by_hop_option.length = hdr.ip6_hop_by_hop_option.length + 0x04;
+        hdr.ip6_hop_by_hop_header.length = hdr.ip6_hop_by_hop_header.length + 1;
+        hdr.pad2.push_front(1);
+        hdr.pad2[0].padding=0;
+        hdr.pad2.push_front(1);
+        hdr.pad2[0].padding=0;
+        hdr.pad2.push_front(1);
+        hdr.pad2[0].padding=0;
+        hdr.pad2.push_front(1);
+        hdr.pad2[0].padding=0;
+        /* Padding update is done ... */ 
     }
 
 
@@ -262,7 +356,10 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
         hdr.ioam_trace_ts[0].hop_lim = hdr.ipv6.hopLimit;
         hdr.ioam_trace_ts[0].timestamp = (bit<32>)standard_metadata.ingress_global_timestamp;
         
-        // This includes only the ioam_trace_ts header length which gets added at each node .. it is incremental header length
+        /* This includes only the ioam_trace_ts header length 
+         * which gets added at each node .. it is incremental header length
+         */
+         
         hdr.ipv6.payloadLen = hdr.ipv6.payloadLen + HEADER_LENGTH;
         hdr.ip6_hop_by_hop_header.length = hdr.ip6_hop_by_hop_header.length + 1;
         hdr.ip6_hop_by_hop_option.length = hdr.ip6_hop_by_hop_option.length + 0x08;
@@ -279,19 +376,30 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
 
     apply {
         if (hdr.ipv6.isValid()) {
+            /* This is the case of the IPV6 packets as we are accepting all 
+             * ipv6 traffic . In this ipv6_lpm , we will just change the destination 
+             * mac address to src mac adddress and update the egress port so as 
+             * to pass it to the egress queue . This happens to 
+             * all ipv6 traffic irrespective of ioam header being inserted or not */
+
             ipv6_lpm.apply();
 
-            if ((!hdr.ip6_hop_by_hop_header.isValid()) ||
-                 (!hdr.ip6_hop_by_hop_option.isValid()) ||
-                 (!hdr.ioam_trace_hdr.isValid())) {
-                 
-                       add_ioam_option();
-              }
-              ioam_trace.apply();
+            if (!hdr.ip6_hop_by_hop_header.isValid())
+            {
+                 add_ipv6_hop_by_hop_and_ioam_option();
+                 ioam_trace.apply();
+            } else if (hdr.ip6_hop_by_hop_option.isValid()) 
+ 
+            {
+                if(hdr.ip6_hop_by_hop_option.type != HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST)
+                {
+                   add_inc_ioam_option();
+                }
+                ioam_trace.apply();
+            }
 
-          }
-      }
-
+        }
+    }
 }
 
 /*************************************************************************
@@ -327,7 +435,8 @@ control DeparserImpl(packet_out packet, in headers hdr) {
         packet.emit(hdr.ip6_hop_by_hop_option);
         packet.emit(hdr.ioam_trace_hdr);
         packet.emit(hdr.ioam_trace_ts);
-        packet.emit(hdr.pad);
+        packet.emit(hdr.pad1);
+        packet.emit(hdr.pad2);
     }
 }
 

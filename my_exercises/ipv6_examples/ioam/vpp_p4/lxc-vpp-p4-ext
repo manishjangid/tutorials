@@ -90,15 +90,13 @@ install_tarball()
 
 install_pfour()
 {
-export PATH="$PATH:/usr/local/lib"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 
     rootfs=$1
-
     cat <<'EOF' > $rootfs/etc/bash.bashrc
 # libc default configuration
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 EOF
+
 
     tree="\
 $rootfs/home/osboxes \
