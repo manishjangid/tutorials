@@ -1,5 +1,5 @@
 {
-    "program": "ioam_generic.p4",
+    "program": "ioam.p4",
     "language": "p4-16",
     "targets": {
       "multiswitch": {

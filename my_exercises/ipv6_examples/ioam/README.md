@@ -136,9 +136,9 @@ After these configs , user can run send native ipv6 packets from H1 ('h1 xterm' 
 
 And user can run wireshark at S1-eth1 to see the original packet entering the IOAM domain. 
 
-       sudo tcpdump -xxx -r s1-eth1.pcap
-       sudo tcpdump -xxx -r s1-eth2.pcap
-       sudo tcpdump -xxx -r s2-eth1.pcap
+       sudo tcpdump -xxx i s1-eth1 -w s1-eth1.pcap
+       sudo tcpdump -xxx -i s1-eth2 -w s1-eth2.pcap
+       sudo tcpdump -xxx -i s2-eth1 -w s2-eth1.pcap
 
 Then wireshark at S1-eth2 , shows an extra hop-by-hop header has been added in the ipv6 packet which includes the following details
 

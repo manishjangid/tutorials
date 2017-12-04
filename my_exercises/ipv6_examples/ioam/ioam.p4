@@ -14,6 +14,9 @@ const bit<8>  MAX_HOP_BY_HOP_PAD_COUNT = 0x04;
 const bit<16> HEADER_LENGTH = 0x08;
 const bit<16> INC_IOAM_HEADER_LENGTH = 0x04;
 
+const bit<8>  SOURCE_NODE = 1;
+const bit<8>  TRANSIT_NODE = 2;
+const bit<8>  NO_OP_NODE = 3;
 
 /*************************************************************************
 *********************** H E A D E R S  ***********************************
@@ -24,6 +27,7 @@ typedef bit<48> macAddr_t;
 typedef bit<32> ip4Addr_t;
 typedef bit<128> ip6Addr_t;
 typedef bit<24>   nodeID_t;
+typedef bit<8>   nodeType_t;
 
 
 header ethernet_t {
@@ -95,6 +99,7 @@ struct ingress_metadata_t {
     bit<9>    ingress_port;
     bit<9>    egress_port;
     bit<32>   timestamp;
+    bit<8>    node_type_acl;
 }
 
 struct parser_metadata_t {
@@ -366,12 +371,20 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
 
     }
 
+    action node_sourcing(nodeType_t node_type) {
+          meta.ingress_metadata.node_type_acl = node_type;
 
+    }
 
     table ioam_trace {
         actions        = { add_ioam_trace; NoAction; }
         default_action =  NoAction();
     }
+    table node_source {
+        actions        = { node_sourcing; NoAction; }
+        default_action =  NoAction();
+    }
+
 
 
     apply {
@@ -384,18 +397,36 @@ control ingress(inout headers hdr, inout metadata meta, inout standard_metadata_
 
             ipv6_lpm.apply();
 
+            node_source.apply();
+            if (meta.ingress_metadata.node_type_acl == NO_OP_NODE) {
+             return;
+            }
+
             if (!hdr.ip6_hop_by_hop_header.isValid())
             {
+                 /* Case 1: When p4 is the first node to insert the header for Ipv6 hop_by_hop */
+             
                  add_ipv6_hop_by_hop_and_ioam_option();
                  ioam_trace.apply();
             } else if (hdr.ip6_hop_by_hop_option.isValid()) 
  
             {
+                /* Case 2 : When P4 is after VPP node or any device which adds the hop_by_hop option or 
+                 * after another p4 node . */
+
                 if(hdr.ip6_hop_by_hop_option.type != HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST)
                 {
                    add_inc_ioam_option();
                 }
                 ioam_trace.apply();
+            } else 
+            {
+                 /* Case 3 : When p4 is after VPP node .. we have not read hdr.ip6_hop_by_hop_option in the parser if 
+                  * if trace type is not HBH_OPTION_TYPE_IOAM_INC_TRACE_DATA_LIST Trace type */
+
+                   add_inc_ioam_option();
+                   ioam_trace.apply();
+
             }
 
         }
